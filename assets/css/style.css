@@ -31,8 +31,8 @@
 :root {
     --primary-color: #FF4D00;
     --primary-hover: #ff6626;
-    --dark-bg: #0B0B0B;
-    --darker-bg: #080808;
+    --dark-bg: #080f19;
+    --darker-bg: #060b14;
     --text-light: #ffffff;
     --text-gray: #a0a0a0;
     --blue-accent: #00A3FF;
@@ -246,6 +246,59 @@ section {
     font-size: 5rem;
     -webkit-text-stroke: 1px var(--text-light);
     color: transparent;
+}
+
+.outline-heading h2 {
+    font-size: 15rem;
+    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.15);
+    color: transparent;
+    font-weight: 700;
+    line-height: 0.8;
+    letter-spacing: -10px;
+    margin-bottom: 2rem;
+}
+
+.about-content p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.7) !important;
+}
+
+.growth-chart-container {
+    position: relative;
+    width: 100%;
+    margin-top: 3rem;
+}
+
+.growth-label {
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+}
+
+.growth-label .text-primary {
+    color: var(--primary-color) !important;
+    font-weight: 700;
+    font-size: 1.4rem;
+}
+
+.growth-visual {
+    width: 100%;
+    height: 200px;
+    margin-bottom: 1rem;
+    position: relative;
+}
+
+.growth-visual img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.growth-years {
+    display: flex;
+    justify-content: space-between;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.9rem;
 }
 
 .growth-chart {
