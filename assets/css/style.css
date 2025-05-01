@@ -316,6 +316,7 @@ section {
     font-size: 1.4rem;
     color: var(--primary-text);
     padding-top: 1.5rem;
+    padding-left: 1rem;
 }
 
 /* Growth Chart Components */
