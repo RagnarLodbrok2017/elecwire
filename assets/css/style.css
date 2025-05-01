@@ -43,6 +43,7 @@
     --blue-accent: #00A3FF;
     --blue-hover: #1fb2ff;
     --primary-text: #6A85A4;
+    --big-text-color: #6A85A4;
 }
 
 body {
@@ -274,14 +275,23 @@ section {
 }
 
 .about-section h2 {
-    font-size: 5rem;
-    -webkit-text-stroke: 1px var(--text-light);
+    font-size: 11rem;
+    -webkit-text-stroke: 2px var(--big-text-color);
     color: transparent;
+    font-weight: 700;
+    line-height: 0.8;
+    letter-spacing: -10px;
+    margin-bottom: 2rem;
+}
+
+.about-title-block {
+    padding-right: 40px;
+    padding-left: 10px;
 }
 
 .outline-heading h2 {
-    font-size: 15rem;
-    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.15);
+    font-size: 11rem;
+    -webkit-text-stroke: 2px var(--big-text-color);
     color: transparent;
     font-weight: 700;
     line-height: 0.8;
@@ -292,6 +302,7 @@ section {
 .elecwire-title {
     font-size: 6rem;
     font-weight: 700;
+    text-align: right;
 }
 
 .elecwire-title i {
@@ -300,10 +311,11 @@ section {
     font-weight: 600;
 }
 
-.about-content p {
-    font-size: 1.1rem;
-    line-height: 1.7;
+.about-content {
+    width: 75%;
+    font-size: 1.4rem;
     color: var(--primary-text);
+    padding-top: 1.5rem;
 }
 
 /* Growth Chart Components */
@@ -326,7 +338,7 @@ section {
 
 .growth-visual {
     width: 100%;
-    height: 200px;
+    max-height: 350px;
     margin-bottom: 1rem;
     position: relative;
 }
