@@ -45,6 +45,7 @@
     --primary-text: #6A85A4;
     --big-text-color: #6A85A4;
     --services-number-color: #6A85A4;
+    --stroke-color: #3a4652;
 }
 
 body {
@@ -418,8 +419,8 @@ section {
     font-size: 10rem;
     font-family: 'Orbitron', sans-serif;
     color: var(--services-number-color);
-    -webkit-text-stroke: 2px #3a4652;
-    text-stroke: 2px #3a4652;
+    -webkit-text-stroke: 2px var(--stroke-color);
+    text-stroke: 2px var(--stroke-color);
     font-weight: 700;
     opacity: 0.3;
     z-index: 2;
@@ -544,7 +545,9 @@ section {
 }
 
 .whyus-section .services-list {
-    margin-top: 20px;
+    margin-top: 0;
+    margin-left: 6rem;
+
 }
 
 .whyus-section .service-item {
@@ -552,31 +555,43 @@ section {
     align-items: center;
     margin-bottom: 30px;
     position: relative;
+    padding-left: 20px;
+    padding-top: 0px;
 }
 
 .whyus-section .service-item:after {
     content: '';
     position: absolute;
-    left: 50px;
+    left: 0;
     bottom: -10px;
-    width: 80%;
+    width: 100%;
     height: 1px;
     background-color: #FF4D00;
 }
 
-.whyus-section .service-number {
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: #1E3A52;
-    margin-right: 20px;
-    min-width: 30px;
+.whyus-section .service-number-outline {
+    position: absolute;
+    left: 0;
+    top: -16px;
+    font-size: 2.5rem;
+    font-family: 'Orbitron', sans-serif;
+    color: var(--services-number-color);
+    -webkit-text-stroke: 2px var(--stroke-color);
+    text-stroke: 1px var(--stroke-color);
+    font-weight: 700;
+    opacity: 0.2;
+    z-index: 0;
+    line-height: 1;
 }
 
 .whyus-section .service-text {
-    font-size: 1.8rem;
-    font-weight: 600;
-    color: #fff;
-    font-family: 'Courier New', monospace;
+    font-size: 2rem;
+    color: var(--text-light);
+    font-family: 'Orbitron', sans-serif;
+    position: relative;
+    z-index: 1;
+    padding-left: 3px;
+    letter-spacing: 1px;
 }
 
 .whyus-section .scroll-indicator {
