@@ -465,6 +465,163 @@ section {
     /* box-shadow: 0 8px 40px 0 rgba(0,0,0,0.4); */
 }
 
+/* Why Us Section Styling */
+.whyus-section {
+    padding: 100px 0;
+    background-color: #050F19;
+    color: var(--primary-text);
+    position: relative;
+    overflow: hidden;
+}
+
+.why-us-content {
+    color: var(--primary-text);
+    font-size: 1.4rem;
+    margin-bottom: 0;
+}
+
+.whyus-section .outline-heading h2 {
+    margin-bottom: 7.5rem;
+}
+
+.stats-container {
+    margin-top: 60px;
+}
+
+.stat-item {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 15px;
+    position: relative;
+}
+
+.stat-number {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: transparent;
+    -webkit-text-stroke: 2px var(--text-light);
+    text-stroke: 2px var(--text-light);
+    line-height: 0.9;
+    margin-bottom: 15px;
+}
+
+.stat-label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-light);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    display: flex;
+    flex-direction: column;
+    line-height: 1.5;
+    gap: 4px;
+    align-items: center;
+    background-color: var(--root-bg);
+    padding: 5px 15px;
+    border-radius: 3px;
+    position: absolute;
+    top: 50px;
+    z-index: 1;
+    margin-top: 0;
+}
+
+.stat-label .text-primary {
+    color: #FF4D00 !important;
+    font-weight: 700;
+}
+
+.whyus-section .services-list {
+    margin-top: 20px;
+}
+
+.whyus-section .service-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+.whyus-section .service-item:after {
+    content: '';
+    position: absolute;
+    left: 50px;
+    bottom: -10px;
+    width: 80%;
+    height: 1px;
+    background-color: #FF4D00;
+}
+
+.whyus-section .service-number {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #1E3A52;
+    margin-right: 20px;
+    min-width: 30px;
+}
+
+.whyus-section .service-text {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #fff;
+    font-family: 'Courier New', monospace;
+}
+
+.whyus-section .scroll-indicator {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.whyus-section .scroll-indicator span {
+    transform: rotate(90deg);
+    transform-origin: center;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    margin-bottom: 30px;
+}
+
+.whyus-section .scroll-line {
+    width: 2px;
+    height: 100px;
+    background-color: #FF4D00;
+}
+
+@media (max-width: 992px) {
+    .whyus-section .outline-heading h2 {
+        font-size: 8rem;
+}
+}
+
+@media (max-width: 768px) {
+    .whyus-section .outline-heading h2 {
+        font-size: 5rem;
+    }
+    
+    .stat-number {
+        font-size: 3rem;
+    }
+    
+    .stat-label {
+        font-size: 0.7rem;
+    }
+    
+    .whyus-section .service-text {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .whyus-section .outline-heading h2 {
+        font-size: 3.5rem;
+    }
+}
 
 /* ==============================
    GALLERY SECTION
@@ -717,4 +874,4 @@ section {
     .btn-outline {
         padding: 0.75rem 1.5rem;
     }
-} 
+}
