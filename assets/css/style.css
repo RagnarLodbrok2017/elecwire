@@ -34,6 +34,7 @@
 ============================== */
 :root {
     --primary-color: #FF4D00;
+    --primary-accent-color: #D83B01;
     --primary-hover: #ff6626;
     --root-bg: #050F19;
     --dark-bg: #080f19;
@@ -74,7 +75,7 @@ section {
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    background-color: var(--primary-color);
+    background-color: var(--primary-accent-color);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -94,7 +95,7 @@ section {
     width: 24px;
     height: 24px;
     border-radius: 50%;
-    background-color: var(--primary-color);
+    background-color: var(--primary-accent-color);
 }
 
 .logo-img {
@@ -258,14 +259,14 @@ section {
 }
 
 .lets-talk span {
-    color: var(--primary-color);
+    color: var(--primary-accent-color);
     font-size: 2.8rem;
     font-weight: 700;
     font-family: 'Orbitron', sans-serif;
 }
 
 .lets-talk i {
-    color: var(--primary-color);
+    color: var(--primary-accent-color);
     font-size: 2.4rem;
 }
 
@@ -309,7 +310,7 @@ section {
 
 .elecwire-title i {
     font-size: 5rem;
-    color: var(--primary-color);
+    color: var(--primary-accent-color);
     font-weight: 600;
 }
 
@@ -334,7 +335,7 @@ section {
 }
 
 .growth-label .text-primary {
-    color: var(--primary-color) !important;
+    color: var(--primary-accent-color) !important;
     font-weight: 700;
     font-size: 1.4rem;
 }
@@ -370,7 +371,7 @@ section {
 
 .growth-bar {
     width: 18%;
-    background-color: var(--primary-color);
+    background-color: var(--primary-accent-color);
     opacity: 0.2;
     transition: height 0.3s ease;
 }
@@ -381,7 +382,7 @@ section {
     left: 0;
     width: 100%;
     height: 2px;
-    background: linear-gradient(90deg, var(--primary-color), var(--blue-accent));
+    background: linear-gradient(90deg, var(--primary-accent-color), var(--blue-accent));
 }
 
 .growth-point {
@@ -439,7 +440,7 @@ section {
     font-family: 'Orbitron', sans-serif;
     font-size: 6rem;
     font-weight: 700;
-    color: var(--primary-color);
+    color: var(--primary-accent-color);
     margin-bottom: 2rem;
     line-height: 1.1;
 }
@@ -479,6 +480,12 @@ section {
     color: var(--primary-text);
     font-size: 1.4rem;
     margin-bottom: 0;
+    height: 100%;
+}
+
+.why-us-paragraph {
+    margin-bottom: 10rem;
+    line-height: 1.4;
 }
 
 .whyus-section .outline-heading h2 {
@@ -540,23 +547,36 @@ section {
 }
 
 .stat-label .text-primary {
-    color: #FF4D00 !important;
+    color: var(--primary-accent-color) !important;
     font-weight: 700;
 }
 
 .whyus-section .services-list {
     margin-top: 0;
     margin-left: 6rem;
-
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    min-height: 450px;
+    /* padding: 30px 0; */
 }
 
 .whyus-section .service-item {
     display: flex;
     align-items: center;
-    margin-bottom: 30px;
+    margin-bottom: 0;
     position: relative;
     padding-left: 20px;
     padding-top: 0px;
+}
+
+.whyus-section .service-item:first-child {
+    margin-top: 0;
+}
+
+.whyus-section .service-item:last-child {
+    margin-bottom: 0;
 }
 
 .whyus-section .service-item:after {
@@ -566,7 +586,7 @@ section {
     bottom: -10px;
     width: 100%;
     height: 1px;
-    background-color: #FF4D00;
+    background-color: var(--primary-accent-color);
 }
 
 .whyus-section .service-number-outline {
@@ -585,37 +605,13 @@ section {
 }
 
 .whyus-section .service-text {
-    font-size: 2rem;
+    font-size: 1.8rem;
     color: var(--text-light);
     font-family: 'Orbitron', sans-serif;
     position: relative;
     z-index: 1;
     padding-left: 3px;
     letter-spacing: 1px;
-}
-
-.whyus-section .scroll-indicator {
-    position: absolute;
-    right: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.whyus-section .scroll-indicator span {
-    transform: rotate(90deg);
-    transform-origin: center;
-    font-size: 0.8rem;
-    letter-spacing: 2px;
-    margin-bottom: 30px;
-}
-
-.whyus-section .scroll-line {
-    width: 2px;
-    height: 100px;
-    background-color: #FF4D00;
 }
 
 @media (max-width: 992px) {
@@ -706,7 +702,7 @@ section {
 .gallery-number {
     width: 24px;
     height: 24px;
-    background-color: var(--primary-color);
+    background-color: var(--primary-accent-color);
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -752,13 +748,13 @@ section {
 }
 
 .social-link:hover {
-    background-color: var(--primary-color);
+    background-color: var(--primary-accent-color);
     color: var(--text-light);
     transform: translateY(-2px);
 }
 
 .hover-warning:hover {
-    color: var(--primary-color) !important;
+    color: var(--primary-accent-color) !important;
 }
 
 /* ==============================
@@ -826,7 +822,7 @@ section {
    BUTTONS
 ============================== */
 .btn-primary {
-    background-color: var(--primary-color);
+    background-color: var(--primary-accent-color);
     border: none;
     padding: 1rem 2.5rem;
     font-family: 'Orbitron', sans-serif;
