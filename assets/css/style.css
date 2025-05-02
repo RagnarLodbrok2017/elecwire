@@ -487,6 +487,17 @@ section {
 .stats-container {
     margin-top: 60px;
 }
+.stats-container .col-md-4:nth-child(1) .stat-item {
+    float: left;
+}
+
+.stats-container .col-md-4:nth-child(2) .stat-item {
+    align-items: center;
+}
+
+.stats-container .col-md-4:nth-child(3) .stat-item {
+    float: right;
+}
 
 .stat-item {
     text-align: center;
@@ -520,10 +531,9 @@ section {
     gap: 4px;
     align-items: center;
     background-color: var(--root-bg);
-    padding: 5px 15px;
     border-radius: 3px;
     position: absolute;
-    top: 50px;
+    top: 49px;
     z-index: 1;
     margin-top: 0;
 }
@@ -875,3 +885,4 @@ section {
         padding: 0.75rem 1.5rem;
     }
 }
+
