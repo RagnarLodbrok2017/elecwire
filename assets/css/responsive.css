@@ -1,0 +1,396 @@
+/* ==========================================================================
+   RESPONSIVE STYLES
+   ========================================================================== */
+
+/* Large Screens (1640px and below) */
+@media (max-width: 1640px) {
+    .container {
+        max-width: 1400px;
+    }
+    
+    .hero-section {
+        min-height: 91vh;
+        display: flex;
+        align-items: stretch;
+        position: relative;
+        overflow: hidden;
+        background-color: var(--root-bg);
+        padding-top: 16px;
+        margin-top: 9vh;
+    }
+    
+    .hero-background {
+        top: 0;
+        right: auto;
+        bottom: auto;
+        left: 0;
+        /* height: 100%;
+        width: 100%; */
+    }
+    
+    .nav-link {
+        font-size: 0.75rem;
+        padding-left: 3.9rem !important;
+    }
+    
+    .hero-subtitle {
+        top: 70vh;
+    }
+    
+    .hero-subtitle h1 {
+        font-size: 3.2rem;
+    }
+    
+    .lets-talk span {
+        color: var(--primary-accent-color);
+        font-size: 2.4rem;
+    }
+    
+    .lets-talk i {
+        font-size: 2rem;
+    }
+    
+    .services-title {
+        font-size: 5rem;
+    }
+    
+    .outline-heading h2 {
+        font-size: 9rem;
+    }
+    
+    .gallery-03-first-bottom-image {
+        width: 300px;
+        flex: 0 0 300px;
+    }
+}
+
+/* Medium-Large Screens (1320px and below) */
+@media (max-width: 1320px) {
+    .container {
+        max-width: 1140px;
+    }
+    
+    .nav-link {
+        padding-left: 3rem !important;
+    }
+    
+    .elecwire-title {
+        font-size: 5rem;
+    }
+    
+    .outline-heading h2 {
+        font-size: 8rem;
+        letter-spacing: -8px;
+    }
+    
+    .services-title {
+        font-size: 4rem;
+    }
+    
+    .services-desc {
+        font-size: 1.2rem;
+    }
+    
+    .gallery-flex-container {
+        height: 58vh;
+    }
+    
+    .whyus-section .service-text {
+        font-size: 1.6rem;
+    }
+}
+
+/* Medium Screens (992px and below) */
+@media (max-width: 992px) {
+    .container {
+        max-width: 960px;
+    }
+    
+    .outline-heading h2 {
+        font-size: 7rem;
+        letter-spacing: -6px;
+    }
+    
+    .about-content {
+        width: 100%;
+        font-size: 1.2rem;
+    }
+    
+    .services-title {
+        font-size: 3.5rem;
+    }
+    
+    .services-desc {
+        font-size: 1.1rem;
+    }
+    
+    .services-main-content {
+        padding-left: 3rem;
+    }
+    
+    .whyus-section .services-list {
+        margin-left: 2rem;
+        min-height: 400px;
+    }
+    
+    .gallery-flex-container {
+        height: auto;
+        position: relative;
+    }
+    
+    .gallery-flex-item {
+        margin-bottom: 20px;
+    }
+    
+    /* Contact section */
+    .contact-section {
+        height: auto;
+        padding: 80px 0;
+    }
+    
+    .contact-info {
+        padding-right: 0;
+        margin-bottom: 4rem;
+    }
+    
+    .footer-brand {
+        font-size: 2rem;
+    }
+    
+    .contact-title {
+        font-size: 2.5rem;
+    }
+    
+    .contact-title i {
+        font-size: 2rem;
+    }
+    
+    .progress-circle-element {
+        width: 300px;
+        height: 300px;
+    }
+}
+
+/* Tablets (768px and below) */
+@media (max-width: 768px) {
+    .container {
+        max-width: 720px;
+    }
+    
+    .hero-subtitle {
+        width: 100%;
+        position: relative;
+        top: auto;
+        margin-top: 20vh;
+    }
+    
+    .hero-subtitle h1 {
+        font-size: 3.2rem;
+    }
+    
+    .lets-talk span {
+        font-size: 2.4rem;
+    }
+    
+    .outline-heading h2 {
+        font-size: 6rem;
+        letter-spacing: -5px;
+    }
+    
+    .elecwire-title {
+        font-size: 4rem;
+        text-align: left;
+    }
+    
+    .services-title {
+        font-size: 3rem;
+    }
+    
+    .services-desc {
+        font-size: 1rem;
+    }
+    
+    .gallery-section {
+        padding-top: 80px;
+    }
+    
+    .gallery-outline-text {
+        margin-bottom: 3rem;
+    }
+    
+    /* Progress section */
+    .progress-circle-element {
+        width: 250px;
+        height: 250px;
+        opacity: 0.6;
+    }
+    
+    .progress-title, 
+    .progress-subtitle {
+        font-size: clamp(2rem, 4vw, 3.5rem);
+    }
+    
+    .progress-chart-container {
+        margin-bottom: 2rem;
+        width: 100%;
+    }
+    
+    .progress-chart {
+        padding: 15px;
+    }
+    
+    .chart-label {
+        font-size: 0.8rem;
+    }
+    
+    .chart-timeframe {
+        font-size: 1rem;
+    }
+}
+
+/* Mobile Landscape (576px and below) */
+@media (max-width: 576px) {
+    .container {
+        max-width: 540px;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    
+    .hero-subtitle h1 {
+        font-size: 2.5rem;
+    }
+    
+    .lets-talk span {
+        font-size: 2rem;
+    }
+    
+    .lets-talk i {
+        font-size: 1.8rem;
+    }
+    
+    .outline-heading h2 {
+        font-size: 4.5rem;
+        letter-spacing: -3px;
+        text-align: center;
+    }
+    
+    .elecwire-title {
+        font-size: 3rem;
+        text-align: center;
+    }
+    
+    .about-title-block {
+        padding-right: 0;
+        padding-left: 0;
+    }
+    
+    .growth-chart-container {
+        margin-top: 2rem;
+    }
+    
+    .services-outline-text {
+        text-align: center;
+    }
+    
+    .services-number-outline {
+        font-size: 7rem;
+    }
+    
+    .services-main-content {
+        padding-top: 2rem;
+        padding-left: 0;
+        text-align: center;
+    }
+    
+    .services-3d-visual {
+        margin-top: 3rem;
+    }
+    
+    .why-us-paragraph {
+        margin-bottom: 5rem;
+    }
+    
+    .whyus-section .services-list {
+        margin-left: 0;
+    }
+    
+    .whyus-section .service-text {
+        font-size: 1.4rem;
+    }
+    
+    .gallery-flex-container.active {
+        flex-direction: column;
+    }
+    
+    .gallery-outline-text {
+        text-align: center;
+    }
+    
+    /* Contact section */
+    .contact-background {
+        opacity: 0.4;
+    }
+    
+    .contact-logo {
+        justify-content: center;
+    }
+    
+    .footer-tagline {
+        text-align: center;
+        margin-left: 0;
+    }
+    
+    .contact-details {
+        padding-left: 1rem;
+    }
+    
+    .contact-title {
+        text-align: center;
+        font-size: 2rem;
+    }
+}
+
+/* Mobile Portrait (375px and below) */
+@media (max-width: 375px) {
+    .container {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    
+    .hero-subtitle h1 {
+        font-size: 2rem;
+    }
+    
+    .lets-talk span {
+        font-size: 1.8rem;
+    }
+    
+    .outline-heading h2 {
+        font-size: 3.5rem;
+        letter-spacing: -2px;
+    }
+    
+    .elecwire-title {
+        font-size: 2.5rem;
+    }
+    
+    .services-title {
+        font-size: 2.5rem;
+    }
+    
+    .stat-number {
+        font-size: 3rem;
+    }
+    
+    .stat-label {
+        font-size: 0.7rem;
+    }
+    
+    .progress-section {
+        height: auto;
+    }
+    
+    .progress-heading {
+        margin-bottom: 5rem !important;
+    }
+} 
