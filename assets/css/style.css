@@ -75,7 +75,7 @@
    GLOBAL STYLES
    ========================================================================== */
 body {
-    font-family: 'Hubot Sans', sans-serif;
+    font-family: 'Hubot Sans', 'Roboto', sans-serif;
     background-color: var(--root-bg);
     color: var(--text-light);
     overflow-x: hidden;
@@ -83,7 +83,7 @@ body {
 }
 
 h1, h2, h3, .display-1, .display-2, .display-3, .display-4, .display-5, .display-6 {
-    font-family: 'Orbitron', sans-serif;
+    font-family: 'Orbitron', monospace, sans-serif;
 }
 
 section {
@@ -92,7 +92,7 @@ section {
 }
 
 .container {
-    max-width: 1632px;
+    max-width: 1668px;
     padding-left: 15px;
     padding-right: 15px;
 }
@@ -169,7 +169,7 @@ html {
 }
 
 .navbar-inner {
-    border-bottom: 1px solid rgba(112, 112, 112, 0.5);
+    border-bottom: 2px solid rgba(112, 112, 112, 0.5);
     width: 100%;
     display: flex;
     height: 100%;
@@ -186,7 +186,7 @@ html {
     font-size: 0.85rem;
     letter-spacing: 1px;
     transition: color 0.3s ease;
-    padding-left: 4.7rem !important;
+    padding-left: 5rem !important;
     color: #ffffff !important;
     padding-right: 0 !important;
 }
@@ -294,7 +294,7 @@ html {
 
 .lets-talk span {
     color: var(--primary-accent-color);
-    font-size: 2.8rem;
+    font-size: 2.7rem;
     font-weight: 700;
     font-family: 'Orbitron', sans-serif;
 }
