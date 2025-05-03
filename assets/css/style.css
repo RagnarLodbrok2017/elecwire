@@ -1117,3 +1117,60 @@ section {
     transform: translateY(-2px);
 }
 
+/* ==============================
+   RESPONSIVE STYLES
+============================== */
+@media (max-width: 768px) {
+    section {
+        padding: 80px 0;
+    }
+    
+    .hero-section {
+        padding-top: 100px;
+    }
+    
+    .navbar {
+        padding: 0.5rem 1rem;
+    }
+    
+    .text-outline {
+        font-size: clamp(2.5rem, 8vw, 4rem);
+    }
+    
+    .about-section h2,
+    .services-section h2,
+    .gallery-section h2 {
+        font-size: 3rem;
+    }
+    
+    .service-card {
+        padding: 1.5rem;
+    }
+    
+    .service-icon {
+        width: 140px;
+        height: 140px;
+    }
+    
+    .btn-primary,
+    .btn-outline {
+        padding: 0.75rem 1.5rem;
+    }
+}
+
+
+/* Style for horizontal layout of navigation and fourth image */
+.gallery-nav-image-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 10px;
+    width: 100%;
+}
+
+
+.gallery-nav-image-wrapper .gallery-fourth-image {
+    width: 50%;
+    height: 88%;
+}
+
