@@ -705,6 +705,7 @@ section {
     align-items: center;
     justify-content: center;
     margin: 80px 0;
+    width: 255px;
 }
 
 .gallery-indicator {
@@ -894,7 +895,69 @@ section {
     flex-basis: 13.5%;
 }
 
-/* Responsive adjustments for smaller screens */
+/* Recalculate flex widths for gallery slide 02 */
+.gallery-flex-02-main {
+    flex-basis: 23.2%;
+}
+
+.gallery-flex-02-second {
+    flex-basis: 23.2%;
+}
+
+.gallery-flex-02-center {
+    flex-basis: 19.8%;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+/* Total for the first three columns: 23.5% + 23.5% + 19.7% = 66.7% */
+/* Adding 3% for 2 gaps (1.5% each) = 69.7% total before combined section */
+
+/* Adjust combined section width */
+.gallery-flex-02-combined {
+    flex-basis: 28.6%; /* Remaining width (100% - 69.7% - 1.5% gap) = 28.8% */
+    display: flex;
+    flex-direction: column;
+}
+
+/* Specific gap for slide 02 */
+[data-slide="02"].gallery-flex-container {
+    gap: 1.7%;
+}
+
+.gallery-fifth-image {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+}
+
+.gallery-fifth-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.gallery-fifth-image::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    transition: background-color 0.3s ease;
+    z-index: 2;
+}
+
+.gallery-fifth-image:hover::after {
+    background-color: rgba(0, 0, 0, 0);
+}
+
+
+/* Responsive adjustments for all gallery slides */
 @media (max-width: 768px) {
     .gallery-flex-container {
         flex-direction: column;
@@ -904,6 +967,11 @@ section {
         flex-basis: 100%;
         margin-bottom: 20px;
     }
+}
+
+/* Gallery Carousel Container Styles */
+[data-slide="02"].gallery-flex-container {
+    gap: 1.7%;
 }
 
 /* ==============================
@@ -1047,46 +1115,5 @@ section {
     background-color: var(--blue-accent);
     color: var(--text-light);
     transform: translateY(-2px);
-}
-
-/* ==============================
-   RESPONSIVE STYLES
-============================== */
-@media (max-width: 768px) {
-    section {
-        padding: 80px 0;
-    }
-    
-    .hero-section {
-        padding-top: 100px;
-    }
-    
-    .navbar {
-        padding: 0.5rem 1rem;
-    }
-    
-    .text-outline {
-        font-size: clamp(2.5rem, 8vw, 4rem);
-    }
-    
-    .about-section h2,
-    .services-section h2,
-    .gallery-section h2 {
-        font-size: 3rem;
-    }
-    
-    .service-card {
-        padding: 1.5rem;
-    }
-    
-    .service-icon {
-        width: 140px;
-        height: 140px;
-    }
-    
-    .btn-primary,
-    .btn-outline {
-        padding: 0.75rem 1.5rem;
-    }
 }
 
