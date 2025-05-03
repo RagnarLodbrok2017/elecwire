@@ -236,108 +236,61 @@
     </section>
 
     <!-- Gallery Section -->
-    <section id="gallery" class="gallery-section">
-        <div class="container">
-            <h2 class="display-4 mb-5 fade-in">Gallery</h2>
-            
-            <div class="row g-4 fade-in">
-                <div class="col-md-6 col-lg-3">
-                    <div class="gallery-item" data-id="1">
-                        <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=2069&auto=format&fit=crop" alt="Industrial Wiring" class="img-fluid">
-                        <div class="gallery-overlay">
-                            <div class="gallery-content">
-                                <div class="d-flex align-items-start">
-                                    <div class="gallery-number">01</div>
-                                    <div>
-                                        <h3 class="h4 text-white">Industrial Wiring</h3>
-                                        <p class="text-light small mt-2">Professional installation of industrial-grade electrical systems for manufacturing facilities.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-md-6 col-lg-3">
-                    <div class="gallery-item" data-id="2">
-                        <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?q=80&w=2070&auto=format&fit=crop" alt="Commercial Projects" class="img-fluid">
-                        <div class="gallery-overlay">
-                            <div class="gallery-content">
-                                <div class="d-flex align-items-start">
-                                    <div class="gallery-number">02</div>
-                                    <div>
-                                        <h3 class="h4 text-white">Commercial Projects</h3>
-                                        <p class="text-light small mt-2">Complete electrical solutions for office buildings, retail spaces, and commercial properties.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-md-6 col-lg-3">
-                    <div class="gallery-item" data-id="3">
-                        <img src="https://images.unsplash.com/photo-1558449028-b53a39d100fc?q=80&w=2071&auto=format&fit=crop" alt="Residential Services" class="img-fluid">
-                        <div class="gallery-overlay">
-                            <div class="gallery-content">
-                                <div class="d-flex align-items-start">
-                                    <div class="gallery-number">03</div>
-                                    <div>
-                                        <h3 class="h4 text-white">Residential Services</h3>
-                                        <p class="text-light small mt-2">Electrical installations and repairs for homes, ensuring safety and efficiency.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-md-6 col-lg-3">
-                    <div class="gallery-item" data-id="4">
-                        <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=2070&auto=format&fit=crop" alt="Smart Systems" class="img-fluid">
-                        <div class="gallery-overlay">
-                            <div class="gallery-content">
-                                <div class="d-flex align-items-start">
-                                    <div class="gallery-number">04</div>
-                                    <div>
-                                        <h3 class="h4 text-white">Smart Systems</h3>
-                                        <p class="text-light small mt-2">Integration of modern technologies for smart homes and buildings.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+    <section id="gallery" class="gallery-section position-relative">
+        <div class="position-relative">
+            <div class="container">
+                <div class="outline-heading gallery-outline-text">
+                    <h2 class="display-1">Gallery</h2>
                 </div>
             </div>
-            
-            <!-- Quote section -->
-            <div class="text-center mt-5 fade-in">
-                <h3 class="display-5 text-white mb-3">
-                    Strive for progress,
-                </h3>
-                <p class="text-warning h3">not perfection</p>
-            </div>
-            
-            <!-- Stats section -->
-            <div class="row g-4 mt-4">
-                <div class="col-6 col-md-3 text-center fade-in">
-                    <h4 class="text-warning display-6 fw-bold">2003</h4>
-                    <p class="text-secondary small">FOUNDED YEAR</p>
+            <div class="row">
+                <!-- Main large image (5 columns) -->
+                <div class="col-md-5 position-relative">
+                    <div class="gallery-main-image">
+                        <img src="assets/images/Gallery-01/Gallery-01/worker.jpg" alt="Industrial Worker" class="img-fluid">
+                    </div>
                 </div>
                 
-                <div class="col-6 col-md-3 text-center fade-in">
-                    <h4 class="text-warning display-6 fw-bold">150+</h4>
-                    <p class="text-secondary small">TEAM MEMBERS</p>
+                <!-- Second image with text (3 columns) -->
+                <div class="col-md-3">
+                    <div class="gallery-second-image mb-3">
+                        <img src="assets/images/Gallery-01/Gallery-01/factory 2.jpg" alt="Factory Interior" class="img-fluid">
+                    </div>
+                    <div class="gallery-description">
+                        <p class="text-light">
+                            Working with us is convenient and straightforward. 
+                            Whatever the job you have in mind, we'll draw upon 
+                            our experience to find a solution that minimizes 
+                            disruption and suits the needs of your business.
+                        </p>
+                    </div>
                 </div>
                 
-                <div class="col-6 col-md-3 text-center fade-in">
-                    <h4 class="text-warning display-6 fw-bold">3000+</h4>
-                    <p class="text-secondary small">PROJECTS COMPLETED</p>
+                <!-- Navigation and number (2 columns) -->
+                <div class="col-md-2">
+                    <div class="gallery-navigation mb-3">
+                        <div class="gallery-indicator text-center mb-3">
+                            <div class="gallery-number-box">01</div>
+                        </div>
+                        <div class="d-flex justify-content-center gap-4">
+                            <button class="gallery-nav-btn prev-btn">
+                                <i class="fas fa-arrow-left"></i>
+                            </button>
+                            <button class="gallery-nav-btn next-btn">
+                                <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="gallery-third-image">
+                        <img src="assets/images/Gallery-01/Gallery-01/factory.jpg" alt="Factory Interior 2" class="img-fluid">
+                    </div>
                 </div>
                 
-                <div class="col-6 col-md-3 text-center fade-in">
-                    <h4 class="text-warning display-6 fw-bold">99%</h4>
-                    <p class="text-secondary small">CLIENT SATISFACTION</p>
+                <!-- Fourth image (2 columns) -->
+                <div class="col-md-2">
+                    <div class="gallery-fourth-image h-100">
+                        <img src="assets/images/Gallery-01/Gallery-01/dinning.jpg" alt="Modern Interior" class="img-fluid h-100 object-fit-cover">
+                    </div>
                 </div>
             </div>
         </div>
