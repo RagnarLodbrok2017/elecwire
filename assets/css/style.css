@@ -690,12 +690,13 @@ section {
 .gallery-third-image img {
     width: 100%;
     height: 100%;
-    /* height: 220px; */
     object-fit: cover;
 }
 
 .gallery-fourth-image img {
     width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .gallery-navigation {
@@ -812,12 +813,14 @@ section {
     flex-wrap: wrap;
     gap: 1.7%;
     width: 100%;
-    height: 56vh;
+    overflow: hidden;
+    height: 67vh;
 }
 
 .gallery-flex-item {
     display: flex;
     flex-direction: column;
+    height: 100%;
 }
 
 .gallery-flex-main {
