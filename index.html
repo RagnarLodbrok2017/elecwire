@@ -457,78 +457,84 @@
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer id="contact" class="footer">
+    <!-- Contact/Footer Section -->
+    <section id="contact" class="contact-section">
+        <div class="contact-background">
+            <img src="assets/images/Footer.png" alt="Footer background" class="footer-background-img">
+        </div>
         <div class="container">
-            <div class="row g-4">
-                <!-- Logo and tagline -->
-                <div class="col-md-6 col-lg-3">
-                    <a class="d-flex align-items-center text-decoration-none" href="#">
-                        <img src="assets/images/logo.png" alt="Elecwire Logo" class="logo-img">
-                        <span class="brand-name">Elecwire</span>
-                    </a>
-                    
-                    <div class="mt-3 d-flex align-items-center">
-                        <span class="text-warning fw-medium me-2">Let's Talk</span>
-                        <i class="fas fa-arrow-right text-warning"></i>
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="contact-info">
+                        <div class="contact-logo mb-4">
+                            <img src="assets/images/logo.png" alt="Elecwire Logo" class="footer-logo">
+                            <h2 class="footer-brand">Elecwire</h2>
+                        </div>
+                        <div class="footer-tagline">
+                            <p>Making Every Corner</p>
+                            <p class="tagline-accent">Safe and Secure.</p>
+                        </div>
+                        
+                        <div class="contact-details mt-5">
+                            <div class="contact-item">
+                                <i class="fas fa-map-marker-alt contact-icon"></i>
+                                <div class="contact-text">
+                                    <p>22 Rady street</p>
+                                    <p>Nasr city - Cairo - Egypt</p>
+                                </div>
+                            </div>
+                            
+                            <div class="contact-item">
+                                <i class="fas fa-phone-alt contact-icon"></i>
+                                <div class="contact-text">
+                                    <p>(+20) 02 22824576</p>
+                                </div>
+                            </div>
+                            
+                            <div class="contact-item">
+                                <i class="fas fa-envelope contact-icon"></i>
+                                <div class="contact-text">
+                                    <p>info@elecwires.com</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 
-                <!-- Contact information -->
-                <div class="col-md-6 col-lg-3">
-                    <h3 class="text-white h5 mb-4">Contact Us</h3>
-                    <ul class="list-unstyled">
-                        <li class="text-secondary mb-2">123 Main Street</li>
-                        <li class="text-secondary mb-2">Suite 100</li>
-                        <li class="text-secondary mb-2">New York, NY 10001</li>
-                        <li class="text-secondary mb-2">info@elecwire.com</li>
-                        <li class="text-secondary">(555) 123-4567</li>
-                    </ul>
-                </div>
-                
-                <!-- Quick links -->
-                <div class="col-md-6 col-lg-3">
-                    <h3 class="text-white h5 mb-4">Quick Links</h3>
-                    <ul class="list-unstyled">
-                        <li class="mb-2"><a href="#" class="text-secondary text-decoration-none hover-warning">Home</a></li>
-                        <li class="mb-2"><a href="#about" class="text-secondary text-decoration-none hover-warning">About</a></li>
-                        <li class="mb-2"><a href="#services" class="text-secondary text-decoration-none hover-warning">Services</a></li>
-                        <li class="mb-2"><a href="#progress" class="text-secondary text-decoration-none hover-warning">Progress</a></li>
-                        <li class="mb-2"><a href="#gallery" class="text-secondary text-decoration-none hover-warning">Gallery</a></li>
-                        <li><a href="#contact" class="text-secondary text-decoration-none hover-warning">Contacts</a></li>
-                    </ul>
-                </div>
-                
-                <!-- Social media -->
-                <div class="col-md-6 col-lg-3">
-                    <h3 class="text-white h5 mb-4">Follow Us</h3>
-                    <div class="d-flex gap-3">
-                        <a href="#" class="social-link">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                        <a href="#" class="social-link">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a href="#" class="social-link">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="mt-5 pt-4 border-top border-secondary">
-                <div class="row align-items-center">
-                    <div class="col-md-6 text-center text-md-start">
-                        <p class="text-secondary small mb-3 mb-md-0">© 2025 Elecwire. All rights reserved.</p>
-                    </div>
-                    <div class="col-md-6 text-center text-md-end">
-                        <a href="#" class="text-secondary small text-decoration-none me-4 hover-warning">Privacy Policy</a>
-                        <a href="#" class="text-secondary small text-decoration-none hover-warning">Terms of Service</a>
+                <div class="col-lg-6">
+                    <div class="contact-form-container">
+                        <h2 class="contact-title">Let's Talk <i class="fas fa-arrow-right"></i></h2>
+                        
+                        <div class="contact-form-wrapper">
+                            <form class="contact-form">
+                                <div class="form-group">
+                                    <input type="text" class="form-control contact-input" placeholder="Your name">
+                                </div>
+                                
+                                <div class="form-group">
+                                    <input type="email" class="form-control contact-input" placeholder="Email">
+                                </div>
+                                
+                                <div class="form-group">
+                                    <input type="tel" class="form-control contact-input" placeholder="Phone">
+                                </div>
+                                
+                                <div class="form-group">
+                                    <textarea class="form-control contact-textarea" rows="5" placeholder="Message"></textarea>
+                                </div>
+                                
+                                <div class="text-end">
+                                    <button type="submit" class="btn contact-submit-btn">
+                                        Send <i class="fas fa-arrow-right ms-2"></i>
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </footer>
+    </section>
 
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>

@@ -54,6 +54,8 @@ body {
     font-family: 'Hubot Sans', sans-serif;
     background-color: var(--root-bg);
     color: var(--text-light);
+    overflow-x: hidden;
+    min-height: 100vh;
 }
 
 h1, h2, h3, .display-1, .display-2, .display-3, .display-4, .display-5, .display-6 {
@@ -67,6 +69,18 @@ section {
 
 .container {
     max-width: 1632px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.row {
+    --bs-gutter-x: 2rem;
+}
+
+/* Prevent container jump */
+html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
 }
 
 /* ==============================
@@ -1150,49 +1164,7 @@ section {
     background-color: rgba(0, 0, 0, 0);
 }
 
-/* ==============================
-   FOOTER SECTION
-============================== */
-.footer {
-    background-color: var(--root-bg);
-    position: relative;
-    overflow: hidden;
-}
 
-.footer::before {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 200px;
-    background: url('../images/Footer.png') no-repeat center bottom;
-    background-size: cover;
-    opacity: 0.1;
-}
-
-.social-link {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background-color: rgba(255, 255, 255, 0.05);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--text-light);
-    text-decoration: none;
-    transition: all 0.3s ease;
-}
-
-.social-link:hover {
-    background-color: var(--primary-accent-color);
-    color: var(--text-light);
-    transform: translateY(-2px);
-}
-
-.hover-warning:hover {
-    color: var(--primary-accent-color) !important;
-}
 
 /* ==============================
    ANIMATIONS
@@ -1293,3 +1265,242 @@ section {
     transform: translateY(-2px);
 }
 
+/* ==============================
+   CONTACT/FOOTER SECTION
+============================== */
+.contact-section {
+    background-color: var(--root-bg);
+    position: relative;
+    height: 100vh;
+    padding: 100px 0;
+    overflow: hidden; 
+    z-index: 1;
+}
+
+.contact-background {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.footer-background-img {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    object-fit: contain;
+    object-position: bottom left;
+}
+
+.contact-info {
+    position: relative;
+    z-index: 2;
+    padding-right: 2rem;
+}
+
+.contact-logo {
+    display: flex;
+    align-items: center;
+}
+
+.footer-logo {
+    height: 60px;
+    margin-right: 1rem;
+}
+
+.footer-brand {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--text-light);
+    margin-bottom: 0;
+}
+
+.footer-tagline {
+    margin-top: 1rem;
+    font-family: 'Hubot Sans', sans-serif;
+}
+
+.footer-tagline p {
+    margin-bottom: 0;
+    font-size: 1.2rem;
+    color: var(--text-light);
+}
+
+.tagline-accent {
+    color: var(--primary-accent-color);
+}
+
+.contact-details {
+    margin-top: 3rem;
+}
+
+.contact-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 1.5rem;
+}
+
+.contact-icon {
+    color: var(--primary-accent-color);
+    font-size: 1.2rem;
+    margin-right: 1rem;
+    margin-top: 0.25rem;
+}
+
+.contact-text p {
+    margin-bottom: 0;
+    color: var(--text-light);
+    font-size: 1rem;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.contact-form-container {
+    position: relative;
+    z-index: 2;
+    padding: 2rem;
+    width: 100%;
+}
+
+.contact-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--primary-accent-color);
+    margin-bottom: 2rem;
+}
+
+.contact-title i {
+    font-size: 2.5rem;
+    margin-left: 1rem;
+}
+
+.contact-form {
+    margin-top: 2rem;
+    position: relative;
+    width: 100%;
+}
+
+.form-group {
+    margin-bottom: 2rem;
+    position: relative;
+    width: 100%;
+}
+
+.contact-input, .contact-textarea {
+    background-color: rgba(12, 26, 41, 1);
+    border: none;
+    border-radius: 0;
+    padding: 1.5rem;
+    color: var(--text-light);
+    font-family: 'Hubot Sans', sans-serif;
+    font-size: 1.2rem;
+    box-sizing: border-box;
+    width: 100%;
+    border: 1px solid transparent;
+    transition: border-color 0.3s ease;
+}
+
+.contact-input:focus,
+.contact-textarea:focus {
+    background-color: rgba(12, 26, 41, 1);
+    box-shadow: none;
+    color: var(--text-light);
+    border: 1px solid rgba(255, 77, 0, 0.3);
+    outline: none;
+    padding: 1.5rem;
+}
+
+.contact-input::placeholder,
+.contact-textarea::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.contact-textarea {
+    resize: none;
+    min-height: 150px;
+    box-sizing: border-box;
+}
+
+.contact-submit-btn {
+    background-color: transparent;
+    color: var(--primary-accent-color);
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    font-size: 1.3rem;
+    padding: 0.5rem 2rem;
+    border: none;
+    transition: transform 0.3s ease, color 0.3s ease;
+    position: relative;
+    letter-spacing: 1px;
+}
+
+.contact-submit-btn:hover {
+    background-color: transparent;
+    color: var(--primary-hover);
+    transform: translateX(8px);
+}
+
+/* Media queries for responsive contact section */
+@media (max-width: 992px) {
+    .contact-section {
+        padding: 80px 0;
+    }
+    
+    .contact-info {
+        padding-right: 0;
+        margin-bottom: 4rem;
+    }
+    
+    .footer-brand {
+        font-size: 2rem;
+    }
+    
+    .contact-title {
+        font-size: 2.5rem;
+    }
+    
+    .contact-title i {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .contact-background {
+        opacity: 0.4;
+    }
+    
+    .contact-logo {
+        justify-content: center;
+    }
+    
+    .footer-tagline {
+        text-align: center;
+    }
+    
+    .contact-details {
+        padding-left: 1rem;
+    }
+    
+    .contact-title {
+        text-align: center;
+        font-size: 2rem;
+    }
+}
+
+.contact-title, 
+.footer-brand,
+.footer-tagline p,
+.contact-icon {
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.contact-form-wrapper {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
