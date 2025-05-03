@@ -1255,36 +1255,7 @@ html {
     width: 100%;
 }
 
-/* Media queries for responsive design */
-@media (max-width: 768px) {
-    .progress-circle-element {
-        width: 250px;
-        height: 250px;
-        opacity: 0.6;
-    }
-    
-    .progress-title, 
-    .progress-subtitle {
-        font-size: clamp(2rem, 4vw, 3.5rem);
-    }
-    
-    .progress-chart-container {
-        margin-bottom: 2rem;
-        width: 100%;
-    }
-    
-    .progress-chart {
-        padding: 15px;
-    }
-    
-    .chart-label {
-        font-size: 0.8rem;
-    }
-    
-    .chart-timeframe {
-        font-size: 1rem;
-    }
-}
+
 
 /* ==========================================================================
    CONTACT/FOOTER SECTION
@@ -1480,56 +1451,18 @@ html {
     transform: translateX(8px);
 }
 
-/* Media queries for responsive contact section */
-@media (max-width: 992px) {
-    .contact-section {
-        padding: 80px 0;
-    }
-    
-    .contact-info {
-        padding-right: 0;
-        margin-bottom: 4rem;
-    }
-    
-    .footer-brand {
-        font-size: 2rem;
-    }
-    
-    .contact-title {
-        font-size: 2.5rem;
-    }
-    
-    .contact-title i {
-        font-size: 2rem;
-    }
-}
 
-@media (max-width: 576px) {
-    .contact-background {
-        opacity: 0.4;
-    }
-    
-    .contact-logo {
-        justify-content: center;
-    }
-    
-    .footer-tagline {
-        text-align: center;
-    }
-    
-    .contact-details {
-        padding-left: 1rem;
-    }
-    
-    .contact-title {
-        text-align: center;
-        font-size: 2rem;
-    }
-}
 
 
 .contact-form-wrapper {
     position: relative;
     width: 100%;
     overflow: hidden;
+}
+
+.contact-title, 
+.footer-brand,
+.footer-tagline p,
+.contact-icon {
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
