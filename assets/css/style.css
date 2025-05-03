@@ -128,7 +128,6 @@ section {
 
 .navbar.scrolled {
     background: var(--root-bg) !important;
-    /* box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); */
 }
 
 .navbar-inner {
@@ -207,10 +206,6 @@ section {
 .hero-gradient {
     position: absolute;
     inset: 0;
-    /* background: linear-gradient(135deg, 
-        rgba(0, 0, 0, 0.8) 0%,
-        rgba(0, 0, 0, 0.6) 100%
-    ); */
     z-index: 2;
 }
 
@@ -322,7 +317,9 @@ section {
     padding-left: 1rem;
 }
 
-/* Growth Chart Components */
+/* ==============================
+   GROWTH CHART COMPONENTS
+============================== */
 .growth-chart-container {
     position: relative;
     width: 100%;
@@ -409,6 +406,7 @@ section {
     position: relative;
     text-align: right;
 }
+
 .services-outline-text h2 {
     margin-bottom: 0;
 }
@@ -461,13 +459,11 @@ section {
 
 .services-3d-visual img {
     width: 100%;
-    /* height: 500px; */
-    /* display: block; */
-    /* border-radius: 50%; */
-    /* box-shadow: 0 8px 40px 0 rgba(0,0,0,0.4); */
 }
 
-/* Why Us Section Styling */
+/* ==============================
+   WHY US SECTION
+============================== */
 .whyus-section {
     padding: 100px 0;
     background-color: #050F19;
@@ -495,6 +491,7 @@ section {
 .stats-container {
     margin-top: 60px;
 }
+
 .stats-container .col-md-4:nth-child(1) .stat-item {
     float: left;
 }
@@ -559,7 +556,6 @@ section {
     justify-content: space-between;
     height: 100%;
     min-height: 450px;
-    /* padding: 30px 0; */
 }
 
 .whyus-section .service-item {
@@ -614,36 +610,6 @@ section {
     letter-spacing: 1px;
 }
 
-@media (max-width: 992px) {
-    .whyus-section .outline-heading h2 {
-        font-size: 8rem;
-}
-}
-
-@media (max-width: 768px) {
-    .whyus-section .outline-heading h2 {
-        font-size: 5rem;
-    }
-    
-    .stat-number {
-        font-size: 3rem;
-    }
-    
-    .stat-label {
-        font-size: 0.7rem;
-    }
-    
-    .whyus-section .service-text {
-        font-size: 1.5rem;
-    }
-}
-
-@media (max-width: 576px) {
-    .whyus-section .outline-heading h2 {
-        font-size: 3.5rem;
-    }
-}
-
 /* ==============================
    GALLERY SECTION
 ============================== */
@@ -663,6 +629,86 @@ section {
     margin-bottom: 5.5rem;
 }
 
+/* Gallery Carousel Container Styles */
+.gallery-carousel {
+    position: relative;
+    width: 100%;
+}
+
+.gallery-flex-container {
+    display: none;
+    flex-wrap: wrap;
+    gap: 1.7%;
+    width: 100%;
+    overflow: hidden;
+    height: 67vh;
+}
+
+.gallery-flex-container.active {
+    display: flex;
+    opacity: 1;
+    position: relative;
+}
+
+/* Gallery slides transition effect */
+.gallery-flex-container {
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    position: absolute;
+    left: 0;
+    right: 0;
+}
+
+/* Gallery slide 01 specific styles */
+.gallery-flex-item {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.gallery-flex-main {
+    flex-basis: 45%;
+}
+
+.gallery-flex-second {
+    flex-basis: 23%;
+}
+
+.gallery-flex-nav {
+    flex-basis: 13.4%;
+}
+
+.gallery-flex-fourth {
+    flex-basis: 13.5%;
+}
+
+/* Gallery slide 02 specific styles */
+[data-slide="02"].gallery-flex-container {
+    gap: 1.7%;
+}
+
+.gallery-flex-02-main {
+    flex-basis: 23.2%;
+}
+
+.gallery-flex-02-second {
+    flex-basis: 23.2%;
+}
+
+.gallery-flex-02-center {
+    flex-basis: 19.8%;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.gallery-flex-02-combined {
+    flex-basis: 28.6%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Gallery image styles */
 .gallery-main-image {
     width: 100%;
     height: 100%;
@@ -677,9 +723,10 @@ section {
     object-fit: cover;
 }
 
-.gallery-second-image, 
-.gallery-third-image, 
+.gallery-second-image,
+.gallery-third-image,
 .gallery-fourth-image {
+    width: 100%;
     overflow: hidden;
     position: relative;
     z-index: 1;
@@ -699,6 +746,21 @@ section {
     object-fit: cover;
 }
 
+.gallery-fifth-image {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+}
+
+.gallery-fifth-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Gallery navigation styles */
 .gallery-navigation {
     display: flex;
     flex-direction: column;
@@ -756,6 +818,10 @@ section {
     margin-left: auto;
 }
 
+.gallery-arrow {
+    font-size: 2.3rem;
+}
+
 .gallery-description {
     color: var(--primary-text);
     font-size: 1.4rem;
@@ -766,95 +832,26 @@ section {
     padding-left: 31%;
 }
 
-.gallery-arrow {
-    font-size: 2.3rem;
-}
-
-@media (max-width: 992px) {
-    .gallery-outline-text h2 {
-        font-size: 10rem;
-    }
-    
-    .gallery-main-image img,
-    .gallery-second-image img,
-    .gallery-third-image img,
-    .gallery-fourth-image img {
-        height: 100%;
-    }
-    
-    .gallery-description {
-        margin-top: 15px;
-        margin-bottom: 30px;
-    }
-}
-
-@media (max-width: 768px) {
-    .gallery-outline-text h2 {
-        font-size: 7rem;
-    }
-    
-    .gallery-main-image img {
-        min-height: 350px;
-    }
-    
-    .gallery-number-box {
-        font-size: 2.5rem;
-    }
-    
-    .gallery-second-image,
-    .gallery-third-image,
-    .gallery-fourth-image {
-        margin-bottom: 20px;
-    }
-}
-
-/* Gallery Section Flex Layout */
-.gallery-carousel {
-    position: relative;
-    width: 100%;
-}
-
-.gallery-flex-container {
-    display: none;
-    flex-wrap: wrap;
-    gap: 1.7%;
-    width: 100%;
-    overflow: hidden;
-    height: 67vh;
-}
-
-.gallery-flex-container.active {
+/* Gallery layout for navigation and fourth image */
+.gallery-nav-image-wrapper {
     display: flex;
-    opacity: 1;
-    position: relative;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 10px;
+    width: 100%;
 }
 
-/* Gallery slides transition effect */
-.gallery-flex-container {
-    opacity: 0;
-    transition: opacity 0.5s ease;
-    position: absolute;
-    left: 0;
-    right: 0;
-}
-
-.gallery-flex-container.active {
-    opacity: 1;
-    position: relative;
+.gallery-nav-image-wrapper .gallery-fourth-image {
+    width: 45%;
+    height: 88%;
 }
 
 /* Gallery image overlay styling */
-.gallery-main-image, 
-.gallery-second-image,
-.gallery-third-image,
-.gallery-fourth-image {
-    position: relative;
-}
-
 .gallery-main-image::after, 
 .gallery-second-image::after,
 .gallery-third-image::after,
-.gallery-fourth-image::after {
+.gallery-fourth-image::after,
+.gallery-fifth-image::after {
     content: '';
     position: absolute;
     top: 0;
@@ -869,109 +866,9 @@ section {
 .gallery-main-image:hover::after, 
 .gallery-second-image:hover::after,
 .gallery-third-image:hover::after,
-.gallery-fourth-image:hover::after {
-    background-color: rgba(0, 0, 0, 0);
-}
-
-.gallery-flex-item {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-}
-
-.gallery-flex-main {
-    flex-basis: 45%;
-}
-
-.gallery-flex-second {
-    flex-basis: 23%;
-}
-
-.gallery-flex-nav {
-    flex-basis: 13.4%;
-}
-
-.gallery-flex-fourth {
-    flex-basis: 13.5%;
-}
-
-/* Recalculate flex widths for gallery slide 02 */
-.gallery-flex-02-main {
-    flex-basis: 23.2%;
-}
-
-.gallery-flex-02-second {
-    flex-basis: 23.2%;
-}
-
-.gallery-flex-02-center {
-    flex-basis: 19.8%;
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-}
-
-/* Total for the first three columns: 23.5% + 23.5% + 19.7% = 66.7% */
-/* Adding 3% for 2 gaps (1.5% each) = 69.7% total before combined section */
-
-/* Adjust combined section width */
-.gallery-flex-02-combined {
-    flex-basis: 28.6%; /* Remaining width (100% - 69.7% - 1.5% gap) = 28.8% */
-    display: flex;
-    flex-direction: column;
-}
-
-/* Specific gap for slide 02 */
-[data-slide="02"].gallery-flex-container {
-    gap: 1.7%;
-}
-
-.gallery-fifth-image {
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    position: relative;
-    z-index: 1;
-}
-
-.gallery-fifth-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.gallery-fifth-image::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.4);
-    transition: background-color 0.3s ease;
-    z-index: 2;
-}
-
+.gallery-fourth-image:hover::after,
 .gallery-fifth-image:hover::after {
     background-color: rgba(0, 0, 0, 0);
-}
-
-
-/* Responsive adjustments for all gallery slides */
-@media (max-width: 768px) {
-    .gallery-flex-container {
-        flex-direction: column;
-    }
-    
-    .gallery-flex-item {
-        flex-basis: 100%;
-        margin-bottom: 20px;
-    }
-}
-
-/* Gallery Carousel Container Styles */
-[data-slide="02"].gallery-flex-container {
-    gap: 1.7%;
 }
 
 /* ==============================
@@ -1115,62 +1012,5 @@ section {
     background-color: var(--blue-accent);
     color: var(--text-light);
     transform: translateY(-2px);
-}
-
-/* ==============================
-   RESPONSIVE STYLES
-============================== */
-@media (max-width: 768px) {
-    section {
-        padding: 80px 0;
-    }
-    
-    .hero-section {
-        padding-top: 100px;
-    }
-    
-    .navbar {
-        padding: 0.5rem 1rem;
-    }
-    
-    .text-outline {
-        font-size: clamp(2.5rem, 8vw, 4rem);
-    }
-    
-    .about-section h2,
-    .services-section h2,
-    .gallery-section h2 {
-        font-size: 3rem;
-    }
-    
-    .service-card {
-        padding: 1.5rem;
-    }
-    
-    .service-icon {
-        width: 140px;
-        height: 140px;
-    }
-    
-    .btn-primary,
-    .btn-outline {
-        padding: 0.75rem 1.5rem;
-    }
-}
-
-
-/* Style for horizontal layout of navigation and fourth image */
-.gallery-nav-image-wrapper {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    gap: 10px;
-    width: 100%;
-}
-
-
-.gallery-nav-image-wrapper .gallery-fourth-image {
-    width: 50%;
-    height: 88%;
 }
 
