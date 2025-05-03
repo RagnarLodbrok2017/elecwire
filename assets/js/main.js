@@ -119,7 +119,35 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
+    // Handle progress section media
+    function handleProgressMedia() {
+        // Check if the browser supports video
+        const progressVideo = document.querySelector('.progress-circle-video');
+        
+        if (progressVideo) {
+            // Try to play the video
+            const playPromise = progressVideo.play();
+            
+            if (playPromise !== undefined) {
+                playPromise.catch(error => {
+                    console.log("Video playback failed:", error);
+                    // Try to play again after a short delay
+                    setTimeout(() => {
+                        progressVideo.play().catch(e => console.log("Retry failed:", e));
+                    }, 1000);
+                });
+            }
+            
+            // Make sure video keeps playing
+            progressVideo.addEventListener('ended', function() {
+                this.currentTime = 0;
+                this.play().catch(e => console.log("Loop play failed:", e));
+            });
+        }
+    }
+    
     // Initialize all functionality
     initGalleryCarousel();
     handleVideoEnd();
+    handleProgressMedia();
 }); 
