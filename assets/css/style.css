@@ -808,13 +808,68 @@ section {
 }
 
 /* Gallery Section Flex Layout */
+.gallery-carousel {
+    position: relative;
+    width: 100%;
+}
+
 .gallery-flex-container {
-    display: flex;
+    display: none;
     flex-wrap: wrap;
     gap: 1.7%;
     width: 100%;
     overflow: hidden;
     height: 67vh;
+}
+
+.gallery-flex-container.active {
+    display: flex;
+    opacity: 1;
+    position: relative;
+}
+
+/* Gallery slides transition effect */
+.gallery-flex-container {
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    position: absolute;
+    left: 0;
+    right: 0;
+}
+
+.gallery-flex-container.active {
+    opacity: 1;
+    position: relative;
+}
+
+/* Gallery image overlay styling */
+.gallery-main-image, 
+.gallery-second-image,
+.gallery-third-image,
+.gallery-fourth-image {
+    position: relative;
+}
+
+.gallery-main-image::after, 
+.gallery-second-image::after,
+.gallery-third-image::after,
+.gallery-fourth-image::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    transition: background-color 0.3s ease;
+    z-index: 2;
+}
+
+.gallery-main-image:hover::after, 
+.gallery-second-image:hover::after,
+.gallery-third-image:hover::after,
+.gallery-fourth-image:hover::after {
+    background-color: rgba(0, 0, 0, 0);
 }
 
 .gallery-flex-item {
@@ -849,36 +904,6 @@ section {
         flex-basis: 100%;
         margin-bottom: 20px;
     }
-}
-
-/* Gallery image overlay styling */
-.gallery-main-image, 
-.gallery-second-image,
-.gallery-third-image,
-.gallery-fourth-image {
-    position: relative;
-}
-
-.gallery-main-image::after, 
-.gallery-second-image::after,
-.gallery-third-image::after,
-.gallery-fourth-image::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.4);
-    transition: background-color 0.3s ease;
-    z-index: 2;
-}
-
-.gallery-main-image:hover::after, 
-.gallery-second-image:hover::after,
-.gallery-third-image:hover::after,
-.gallery-fourth-image:hover::after {
-    background-color: rgba(0, 0, 0, 0);
 }
 
 /* ==============================

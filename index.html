@@ -243,52 +243,159 @@
                     <h2 class="display-1">Gallery</h2>
                 </div>
             </div>
-            <div class="gallery-flex-container">
-                <!-- Main large image (45%) -->
-                <div class="gallery-flex-item gallery-flex-main position-relative">
-                    <div class="gallery-main-image">
-                        <img src="assets/images/Gallery-01/1.jpg" alt="Industrial Worker" class="img-fluid">
-                    </div>
-                </div>
-                
-                <!-- Second image with text (25%) -->
-                <div class="gallery-flex-item gallery-flex-second">
-                    <div class="gallery-second-image mb-3">
-                        <img src="assets/images/Gallery-01/2.jpg" alt="Factory Interior" class="img-fluid">
-                    </div>
-                    <div class="gallery-description">
-                        <p class="gallery-desc-text">
-                            Working with us is convenient and straightforward.
-                            Whatever the job you have in mind, we'll draw upon our experience 
-                            to find a solution that minimizes disruption and suits the needs
-                        </p>
-                    </div>
-                </div>
-                
-                <!-- Navigation and number (15%) -->
-                <div class="gallery-flex-item gallery-flex-nav">
-                    <div class="gallery-navigation">
-                        <div class="gallery-indicator text-center">
-                            <div class="gallery-number-box">01</div>
-                            <div class="d-flex justify-content-center gap-4">
-                                <button class="gallery-nav-btn prev-btn">
-                                    <i class="fas fa-arrow-left gallery-arrow"></i>
-                                </button>
-                                <button class="gallery-nav-btn next-btn">
-                                    <i class="fas fa-arrow-right gallery-arrow"></i>
-                                </button>
-                            </div>
+            
+            <!-- Carousel container with all slides -->
+            <div class="gallery-carousel">
+                <!-- Slide 01 - Active by default -->
+                <div class="gallery-flex-container active" data-slide="01">
+                    <!-- Main large image (45%) -->
+                    <div class="gallery-flex-item gallery-flex-main position-relative">
+                        <div class="gallery-main-image">
+                            <img src="assets/images/Gallery-01/1.jpg" alt="Industrial Worker" class="img-fluid">
                         </div>
                     </div>
-                    <div class="gallery-third-image">
-                        <img src="assets/images/Gallery-01/3.jpg" alt="Factory Interior 2" class="img-fluid">
+                    
+                    <!-- Second image with text (25%) -->
+                    <div class="gallery-flex-item gallery-flex-second">
+                        <div class="gallery-second-image mb-3">
+                            <img src="assets/images/Gallery-01/2.jpg" alt="Factory Interior" class="img-fluid">
+                        </div>
+                        <div class="gallery-description">
+                            <p class="gallery-desc-text">
+                                Working with us is convenient and straightforward.
+                                Whatever the job you have in mind, we'll draw upon our experience 
+                                to find a solution that minimizes disruption and suits the needs
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <!-- Navigation and number (15%) -->
+                    <div class="gallery-flex-item gallery-flex-nav">
+                        <div class="gallery-navigation">
+                            <div class="gallery-indicator text-center">
+                                <div class="gallery-number-box">01</div>
+                                <div class="d-flex justify-content-center gap-4">
+                                    <button class="gallery-nav-btn prev-btn">
+                                        <i class="fas fa-arrow-left gallery-arrow"></i>
+                                    </button>
+                                    <button class="gallery-nav-btn next-btn">
+                                        <i class="fas fa-arrow-right gallery-arrow"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="gallery-third-image">
+                            <img src="assets/images/Gallery-01/3.jpg" alt="Factory Interior 2" class="img-fluid">
+                        </div>
+                    </div>
+                    
+                    <!-- Fourth image (15%) -->
+                    <div class="gallery-flex-item gallery-flex-fourth">
+                        <div class="gallery-fourth-image h-100">
+                            <img src="assets/images/Gallery-01/4.jpg" alt="Modern Interior" class="img-fluid h-100 object-fit-cover">
+                        </div>
                     </div>
                 </div>
                 
-                <!-- Fourth image (15%) -->
-                <div class="gallery-flex-item gallery-flex-fourth">
-                    <div class="gallery-fourth-image h-100">
-                        <img src="assets/images/Gallery-01/4.jpg" alt="Modern Interior" class="img-fluid h-100 object-fit-cover">
+                <!-- Slide 02 -->
+                <div class="gallery-flex-container" data-slide="02">
+                    <!-- Main large image (45%) -->
+                    <div class="gallery-flex-item gallery-flex-main position-relative">
+                        <div class="gallery-main-image">
+                            <img src="assets/images/Gallery-02/1.jpg" alt="Factory Hallway" class="img-fluid">
+                        </div>
+                    </div>
+                    
+                    <!-- Second image with text (25%) -->
+                    <div class="gallery-flex-item gallery-flex-second">
+                        <div class="gallery-second-image mb-3">
+                            <img src="assets/images/Gallery-02/2.jpg" alt="Modern Interior" class="img-fluid">
+                        </div>
+                        <div class="gallery-description">
+                            <p class="gallery-desc-text">
+                                We invest in all our team members and make sure that they 
+                                receive ongoing training that will enhance their skills 
+                                beyond what they learn while working on the tools.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <!-- Navigation and number (15%) -->
+                    <div class="gallery-flex-item gallery-flex-nav">
+                        <div class="gallery-navigation">
+                            <div class="gallery-indicator text-center">
+                                <div class="gallery-number-box">02</div>
+                                <div class="d-flex justify-content-center gap-4">
+                                    <button class="gallery-nav-btn prev-btn">
+                                        <i class="fas fa-arrow-left gallery-arrow"></i>
+                                    </button>
+                                    <button class="gallery-nav-btn next-btn">
+                                        <i class="fas fa-arrow-right gallery-arrow"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="gallery-third-image">
+                            <img src="assets/images/Gallery-02/3.jpg" alt="Industrial Worker" class="img-fluid">
+                        </div>
+                    </div>
+                    
+                    <!-- Fourth image (15%) -->
+                    <div class="gallery-flex-item gallery-flex-fourth">
+                        <div class="gallery-fourth-image h-100">
+                            <img src="assets/images/Gallery-02/4.jpg" alt="Factory Interior" class="img-fluid h-100 object-fit-cover">
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Slide 03 -->
+                <div class="gallery-flex-container" data-slide="03">
+                    <!-- Main large image (45%) -->
+                    <div class="gallery-flex-item gallery-flex-main position-relative">
+                        <div class="gallery-main-image">
+                            <img src="assets/images/Gallery-03/1.jpg" alt="Modern Interior" class="img-fluid">
+                        </div>
+                    </div>
+                    
+                    <!-- Second image with text (25%) -->
+                    <div class="gallery-flex-item gallery-flex-second">
+                        <div class="gallery-second-image mb-3">
+                            <img src="assets/images/Gallery-03/2.jpg" alt="Industrial Worker" class="img-fluid">
+                        </div>
+                        <div class="gallery-description">
+                            <p class="gallery-desc-text">
+                                We take health and safety extremely seriously, carrying out thorough
+                                equipment checks and providing a detailed Risk Assessment Method
+                                Statement (RAMS) before each project.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <!-- Navigation and number (15%) -->
+                    <div class="gallery-flex-item gallery-flex-nav">
+                        <div class="gallery-navigation">
+                            <div class="gallery-indicator text-center">
+                                <div class="gallery-number-box">03</div>
+                                <div class="d-flex justify-content-center gap-4">
+                                    <button class="gallery-nav-btn prev-btn">
+                                        <i class="fas fa-arrow-left gallery-arrow"></i>
+                                    </button>
+                                    <button class="gallery-nav-btn next-btn">
+                                        <i class="fas fa-arrow-right gallery-arrow"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="gallery-third-image">
+                            <img src="assets/images/Gallery-03/3.jpg" alt="Factory Interior" class="img-fluid">
+                        </div>
+                    </div>
+                    
+                    <!-- Fourth image (15%) -->
+                    <div class="gallery-flex-item gallery-flex-fourth">
+                        <div class="gallery-fourth-image h-100">
+                            <img src="assets/images/Gallery-03/4.jpg" alt="Factory Hallway" class="img-fluid h-100 object-fit-cover">
+                        </div>
                     </div>
                 </div>
             </div>

@@ -61,4 +61,65 @@ $(document).ready(function() {
             $(this).remove();
         });
     });
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Gallery Carousel functionality
+    function initGalleryCarousel() {
+        // Get all gallery slides
+        const gallerySlides = document.querySelectorAll('.gallery-flex-container');
+        const totalSlides = gallerySlides.length;
+        let currentSlideIndex = 0; // First slide is active by default
+        
+        // Get all navigation buttons
+        const prevButtons = document.querySelectorAll('.prev-btn');
+        const nextButtons = document.querySelectorAll('.next-btn');
+        
+        // Add click event to all previous buttons
+        prevButtons.forEach(btn => {
+            btn.addEventListener('click', function() {
+                // Calculate the previous slide index (with loop back to last slide)
+                currentSlideIndex = (currentSlideIndex - 1 + totalSlides) % totalSlides;
+                updateActiveSlide();
+            });
+        });
+        
+        // Add click event to all next buttons
+        nextButtons.forEach(btn => {
+            btn.addEventListener('click', function() {
+                // Calculate the next slide index (with loop back to first slide)
+                currentSlideIndex = (currentSlideIndex + 1) % totalSlides;
+                updateActiveSlide();
+            });
+        });
+        
+        // Function to update which slide is active
+        function updateActiveSlide() {
+            // Remove 'active' class from all slides
+            gallerySlides.forEach(slide => {
+                slide.classList.remove('active');
+            });
+            
+            // Add 'active' class to current slide
+            gallerySlides[currentSlideIndex].classList.add('active');
+        }
+    }
+    
+    // Handle video end
+    function handleVideoEnd() {
+        const video = document.getElementById('background-video');
+        const afterImage = document.getElementById('after-video-img');
+        
+        if (video && afterImage) {
+            video.addEventListener('ended', function() {
+                // Hide video and show image when video ends
+                video.style.display = 'none';
+                afterImage.style.display = 'block';
+            });
+        }
+    }
+    
+    // Initialize all functionality
+    initGalleryCarousel();
+    handleVideoEnd();
 }); 
