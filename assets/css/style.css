@@ -851,6 +851,36 @@ section {
     }
 }
 
+/* Gallery image overlay styling */
+.gallery-main-image, 
+.gallery-second-image,
+.gallery-third-image,
+.gallery-fourth-image {
+    position: relative;
+}
+
+.gallery-main-image::after, 
+.gallery-second-image::after,
+.gallery-third-image::after,
+.gallery-fourth-image::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    transition: background-color 0.3s ease;
+    z-index: 2;
+}
+
+.gallery-main-image:hover::after, 
+.gallery-second-image:hover::after,
+.gallery-third-image:hover::after,
+.gallery-fourth-image:hover::after {
+    background-color: rgba(0, 0, 0, 0);
+}
+
 /* ==============================
    FOOTER SECTION
 ============================== */
