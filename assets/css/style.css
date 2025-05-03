@@ -1375,6 +1375,16 @@ html {
     margin-right: 1rem;
     margin-top: 0.25rem;
     text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    font-weight: 700;
+}
+
+/* Style for location icon to make it look more like an outline */
+.fa-location-dot.contact-icon,
+.fa-phone-alt.contact-icon,
+.fa-envelope.contact-icon {
+    -webkit-text-stroke: 1px var(--primary-accent-color);
+    color: transparent;
+    text-shadow: none;
 }
 
 .contact-text p {
