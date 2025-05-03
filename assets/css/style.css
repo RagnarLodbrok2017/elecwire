@@ -17,6 +17,27 @@
 
 @font-face {
     font-family: 'Hubot Sans';
+    src: url('../fonts/HubotSans/HubotSans-ExtraLight.ttf') format('truetype');
+    font-weight: 100;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Hubot Sans';
+    src: url('../fonts/HubotSans/HubotSans-Light.ttf') format('truetype');
+    font-weight: 200;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Hubot Sans';
+    src: url('../fonts/HubotSans/HubotSans-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Hubot Sans';
     src: url('../fonts/HubotSans/HubotSans-Regular.ttf') format('truetype');
     font-weight: 400;
     font-display: swap;
@@ -165,8 +186,9 @@ html {
     font-size: 0.85rem;
     letter-spacing: 1px;
     transition: color 0.3s ease;
-    padding-left: 4.18rem !important;
+    padding-left: 4.7rem !important;
     color: #ffffff !important;
+    padding-right: 0 !important;
 }
 
 .nav-link:hover {
@@ -1323,12 +1345,12 @@ html {
 .footer-tagline {
     margin-top: 1rem;
     font-family: 'Hubot Sans', sans-serif;
+    margin-left: 5rem;
 }
 
 .footer-tagline p {
     margin-bottom: 0;
-    font-size: 1.2rem;
-    color: var(--text-light);
+    font-size: 1.3rem;
     text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
@@ -1338,6 +1360,7 @@ html {
 
 .contact-details {
     margin-top: 3rem;
+    margin-left: 1.5rem;
 }
 
 .contact-item {
@@ -1348,7 +1371,7 @@ html {
 
 .contact-icon {
     color: var(--primary-accent-color);
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     margin-right: 1rem;
     margin-top: 0.25rem;
     text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
@@ -1356,9 +1379,8 @@ html {
 
 .contact-text p {
     margin-bottom: 0;
-    color: var(--text-light);
-    font-size: 1rem;
-    text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    font-size: 1.3rem;
+    font-weight: 300;
 }
 
 .contact-form-container {
@@ -1401,7 +1423,7 @@ html {
     padding: 1.5rem;
     color: var(--text-light);
     font-family: 'Hubot Sans', sans-serif;
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     box-sizing: border-box;
     width: 100%;
     border: 1px solid transparent;
@@ -1495,12 +1517,6 @@ html {
     }
 }
 
-.contact-title, 
-.footer-brand,
-.footer-tagline p,
-.contact-icon {
-    text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-}
 
 .contact-form-wrapper {
     position: relative;
