@@ -593,7 +593,7 @@ section {
     font-family: 'Orbitron', sans-serif;
     color: var(--services-number-color);
     -webkit-text-stroke: 2px var(--stroke-color);
-    text-stroke: 1px var(--stroke-color);
+    text-stroke: 2px var(--stroke-color);
     font-weight: 700;
     opacity: 0.2;
     z-index: 0;
@@ -641,7 +641,7 @@ section {
     gap: 1.7%;
     width: 100%;
     overflow: hidden;
-    height: 67vh;
+    height: 64vh;
 }
 
 .gallery-flex-container.active {
@@ -708,6 +708,116 @@ section {
     flex-direction: column;
 }
 
+/* Gallery slide 03 specific styles */
+[data-slide="03"].gallery-flex-container {
+    gap: 1.7%;
+}
+
+.gallery-flex-03-main {
+    flex-basis: 15%;
+}
+
+.gallery-flex-03-second {
+    flex-basis: 53%;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    gap: 15px;
+}
+
+.gallery-03-top-row {
+    display: flex;
+    gap: 33px;
+    height: 61%;
+}
+
+.gallery-03-large-image {
+    /* flex-basis: 70%; */
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+}
+
+.gallery-03-side-image {
+    /* flex-basis: 30%; */
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+}
+
+.gallery-03-bottom-row {
+    display: flex;
+    gap: 33px;
+    height: 39%;
+}
+
+.gallery-03-bottom-images {
+    flex-basis: 50%;
+    display: flex;
+    gap: 33px;
+    padding-top: 33px;
+    justify-content: flex-start;
+}
+
+.gallery-03-bottom-image {
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+}
+
+.gallery-03-first-bottom-image {
+    width: 355px;
+    flex: 0 0 355px;
+}
+
+.gallery-03-second-bottom-image {
+    flex: 1;
+    width: 230px;
+}
+
+[data-slide="03"] .gallery-description {
+    flex-basis: 50%;
+    margin-top: 0;
+}
+
+[data-slide="03"] .gallery-desc-text {
+    padding-left: 45px;
+}
+
+.gallery-03-large-image img,
+.gallery-03-side-image img,
+.gallery-03-bottom-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+}
+
+.gallery-03-large-image::after,
+.gallery-03-side-image::after,
+.gallery-03-bottom-image::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    transition: background-color 0.3s ease;
+    z-index: 2;
+}
+
+.gallery-03-large-image:hover::after,
+.gallery-03-side-image:hover::after,
+.gallery-03-bottom-image:hover::after {
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.gallery-flex-03-combined {
+    flex-basis: 28.6%;
+    display: flex;
+    flex-direction: column;
+}
+
 /* Gallery image styles */
 .gallery-main-image {
     width: 100%;
@@ -743,7 +853,7 @@ section {
 .gallery-fourth-image img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: fill;
 }
 
 .gallery-fifth-image {
@@ -843,7 +953,7 @@ section {
 
 .gallery-nav-image-wrapper .gallery-fourth-image {
     width: 45%;
-    height: 88%;
+    height: 80%;
 }
 
 /* Gallery image overlay styling */
