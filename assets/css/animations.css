@@ -122,6 +122,81 @@
     animation-delay: 1s;
 }
 
+/* ------------- SERVICES SECTION ANIMATIONS ------------- */
+
+/* Services heading animation - from right to left */
+#services .services-outline-text h2 {
+    opacity: 0;
+    transform: translateX(500px);
+    animation: fadeInRightToLeft 3s ease forwards;
+    animation-play-state: paused;
+}
+
+/* When the section is in view, play the animation */
+#services.in-view .services-outline-text h2 {
+    animation-play-state: running;
+}
+
+/* Service title and content animations */
+#services .services-title {
+    opacity: 0;
+    transform: translateY(100px);
+    animation: fadeInUp 2s ease forwards;
+    animation-play-state: paused;
+}
+
+#services.in-view .services-title {
+    animation-play-state: running;
+    animation-delay: 0.8s;
+}
+
+#services .services-desc {
+    opacity: 0;
+    animation: fadeIn 2s ease forwards;
+    animation-play-state: paused;
+}
+
+#services.in-view .services-desc {
+    animation-play-state: running;
+    animation-delay: 1.2s;
+}
+
+#services .services-3d-visual {
+    opacity: 0;
+    transform: scale(0.8);
+    animation: zoomIn 2.5s ease forwards;
+    animation-play-state: paused;
+}
+
+#services.in-view .services-3d-visual {
+    animation-play-state: running;
+    animation-delay: 0.5s;
+}
+
+/* Right to left animation for services heading */
+@keyframes fadeInRightToLeft {
+    from {
+        opacity: 0;
+        transform: translateX(500px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Zoom in animation for services visual */
+@keyframes zoomIn {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
 /* Arrow slide animation */
 @keyframes slideRightArrow {
     0% {

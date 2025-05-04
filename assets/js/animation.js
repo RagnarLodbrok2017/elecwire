@@ -63,6 +63,50 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log("About section not found");
     }
     
+    // Services section animation trigger
+    const servicesSection = document.getElementById('services');
+    
+    if (servicesSection) {
+        console.log("Services section found, setting up observer");
+        
+        // Safety timeout for services section
+        setTimeout(() => {
+            if (!servicesSection.classList.contains('in-view')) {
+                console.log("Safety timeout triggered, forcing services section animation");
+                servicesSection.classList.add('in-view');
+            }
+        }, 5000); // 5 second safety timeout
+        
+        const servicesObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                console.log("Services section intersection status:", entry.isIntersecting);
+                
+                if (entry.isIntersecting) {
+                    servicesSection.classList.add('in-view');
+                    console.log("Added in-view class to services section");
+                    servicesObserver.unobserve(servicesSection);
+                }
+            });
+        }, {
+            threshold: 0.1, // Trigger when just 10% of the section is visible
+            rootMargin: '-100px 0px'
+        });
+        
+        servicesObserver.observe(servicesSection);
+        
+        // Also trigger the animation when the user scrolls to services section
+        window.addEventListener('scroll', function() {
+            const servicesSectionTop = servicesSection.getBoundingClientRect().top;
+            
+            if (servicesSectionTop < window.innerHeight * 0.8 && !servicesSection.classList.contains('in-view')) {
+                console.log("Scroll-based trigger for services section");
+                servicesSection.classList.add('in-view');
+            }
+        });
+    } else {
+        console.log("Services section not found");
+    }
+    
     // Navbar scroll effect
     const navbar = document.querySelector('.navbar');
     
