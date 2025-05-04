@@ -87,7 +87,7 @@ h1, h2, h3, .display-1, .display-2, .display-3, .display-4, .display-5, .display
 }
 
 section {
-    padding: 120px 0;
+    margin: 240px 0 0 0;
     position: relative;
 }
 
@@ -504,7 +504,7 @@ html {
    WHY US SECTION
    ========================================================================== */
 .whyus-section {
-    padding: 100px 0;
+    margin: 100px 0;
     background-color: #050F19;
     color: var(--primary-text);
     position: relative;

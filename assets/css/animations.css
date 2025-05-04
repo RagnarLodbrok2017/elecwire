@@ -190,7 +190,7 @@
 /* Why Us content animation */
 #whyus .why-us-paragraph {
     opacity: 0;
-    animation: fadeIn 2s ease forwards;
+    animation: fadeIn 2.5s ease forwards;
     animation-play-state: paused;
 }
 
@@ -203,7 +203,7 @@
 #whyus .stats-container {
     opacity: 0;
     transform: translateY(300px);
-    animation: fadeInFromBottom 2s ease forwards;
+    animation: fadeInFromBottom 2.5s ease forwards;
     animation-play-state: paused;
 }
 
@@ -220,28 +220,28 @@
 #whyus .service-item {
     opacity: 0;
     transform: translateX(-100px) scale(0.9);
-    animation: slideInAndGrow 1.5s ease forwards;
+    animation: slideInAndGrow 2s ease forwards;
     animation-play-state: paused;
 }
 
 #whyus.in-view .service-item:nth-child(1) {
     animation-play-state: running;
-    animation-delay: 0.5s;
+    animation-delay: 0.7s;
 }
 
 #whyus.in-view .service-item:nth-child(2) {
     animation-play-state: running;
-    animation-delay: 0.8s;
+    animation-delay: 0.9s;
 }
 
 #whyus.in-view .service-item:nth-child(3) {
     animation-play-state: running;
-    animation-delay: 1.1s;
+    animation-delay: 1.3s;
 }
 
 #whyus.in-view .service-item:nth-child(4) {
     animation-play-state: running;
-    animation-delay: 1.4s;
+    animation-delay: 1.5s;
 }
 
 /* Animation for service items */
@@ -575,7 +575,7 @@
 #contact .contact-info {
     opacity: 0;
     transform: translateY(100px);
-    animation: contactElementsIn 1s ease forwards;
+    animation: contactElementsIn 1.5s ease forwards;
     animation-play-state: paused;
 }
 
@@ -587,7 +587,7 @@
 #contact .contact-form-container {
     opacity: 0;
     transform: translateY(100px);
-    animation: contactElementsIn 1s ease forwards;
+    animation: contactElementsIn 1.5s ease forwards;
     animation-play-state: paused;
 }
 
@@ -598,13 +598,13 @@
 /* Footer background image animation - fade in after elements appear */
 #contact .footer-background-img {
     opacity: 0;
-    animation: footerBgFadeIn 1.5s ease forwards;
+    animation: footerBgFadeIn 2s ease forwards;
     animation-play-state: paused;
 }
 
 #contact.in-view .footer-background-img {
     animation-play-state: running;
-    animation-delay: 0.8s; /* Start after contact elements have appeared */
+    animation-delay: 1s; /* Start after contact elements have appeared */
 }
 
 /* Contact elements animation */
