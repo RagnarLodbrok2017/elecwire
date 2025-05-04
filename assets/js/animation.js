@@ -107,6 +107,50 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log("Services section not found");
     }
     
+    // Why Us section animation trigger
+    const whyusSection = document.getElementById('whyus');
+    
+    if (whyusSection) {
+        console.log("Why Us section found, setting up observer");
+        
+        // Safety timeout for why us section
+        setTimeout(() => {
+            if (!whyusSection.classList.contains('in-view')) {
+                console.log("Safety timeout triggered, forcing why us section animation");
+                whyusSection.classList.add('in-view');
+            }
+        }, 6000); // 6 second safety timeout
+        
+        const whyusObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                console.log("Why Us section intersection status:", entry.isIntersecting);
+                
+                if (entry.isIntersecting) {
+                    whyusSection.classList.add('in-view');
+                    console.log("Added in-view class to why us section");
+                    whyusObserver.unobserve(whyusSection);
+                }
+            });
+        }, {
+            threshold: 0.1, // Trigger when just 10% of the section is visible
+            rootMargin: '-100px 0px'
+        });
+        
+        whyusObserver.observe(whyusSection);
+        
+        // Also trigger the animation when the user scrolls to why us section
+        window.addEventListener('scroll', function() {
+            const whyusSectionTop = whyusSection.getBoundingClientRect().top;
+            
+            if (whyusSectionTop < window.innerHeight * 0.8 && !whyusSection.classList.contains('in-view')) {
+                console.log("Scroll-based trigger for why us section");
+                whyusSection.classList.add('in-view');
+            }
+        });
+    } else {
+        console.log("Why Us section not found");
+    }
+    
     // Navbar scroll effect
     const navbar = document.querySelector('.navbar');
     

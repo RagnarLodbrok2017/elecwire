@@ -173,6 +173,89 @@
     animation-delay: 0.5s;
 }
 
+/* ------------- WHY US SECTION ANIMATIONS ------------- */
+
+/* Why Us heading animation - from left */
+#whyus .outline-heading h2 {
+    opacity: 0;
+    transform: translateX(-500px);
+    animation: fadeInLeftHighSpace 3s ease forwards;
+    animation-play-state: paused;
+}
+
+#whyus.in-view .outline-heading h2 {
+    animation-play-state: running;
+}
+
+/* Why Us content animation */
+#whyus .why-us-paragraph {
+    opacity: 0;
+    animation: fadeIn 2s ease forwards;
+    animation-play-state: paused;
+}
+
+#whyus.in-view .why-us-paragraph {
+    animation-play-state: running;
+    animation-delay: 0.5s;
+}
+
+/* Stats container animation - coming from bottom */
+#whyus .stats-container {
+    opacity: 0;
+    transform: translateY(300px);
+    animation: fadeInFromBottom 2s ease forwards;
+    animation-play-state: paused;
+}
+
+#whyus.in-view .stats-container {
+    animation-play-state: running;
+    animation-delay: 1.2s;
+}
+
+/* Services list animation - items coming in sequence from left */
+#whyus .services-list {
+    position: relative;
+}
+
+#whyus .service-item {
+    opacity: 0;
+    transform: translateX(-100px) scale(0.9);
+    animation: slideInAndGrow 1.5s ease forwards;
+    animation-play-state: paused;
+}
+
+#whyus.in-view .service-item:nth-child(1) {
+    animation-play-state: running;
+    animation-delay: 0.5s;
+}
+
+#whyus.in-view .service-item:nth-child(2) {
+    animation-play-state: running;
+    animation-delay: 0.8s;
+}
+
+#whyus.in-view .service-item:nth-child(3) {
+    animation-play-state: running;
+    animation-delay: 1.1s;
+}
+
+#whyus.in-view .service-item:nth-child(4) {
+    animation-play-state: running;
+    animation-delay: 1.4s;
+}
+
+/* Animation for service items */
+@keyframes slideInAndGrow {
+    0% {
+        opacity: 0;
+        transform: translateX(-50px) scale(1);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+    }
+}
+
 /* Right to left animation for services heading */
 @keyframes fadeInRightToLeft {
     from {
