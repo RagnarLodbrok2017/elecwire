@@ -110,16 +110,16 @@
 }
 
 /* About content second paragraph animation */
-#about .about-content p:nth-child(2) {
+#about .about-content p:last-child {
     opacity: 0;
     transform: translateY(500px);
     animation: fadeInFromBottom 2.5s ease forwards;
     animation-play-state: paused;
 }
 
-#about.in-view .about-content p:nth-child(2) {
+#about.in-view .about-content p:last-child {
     animation-play-state: running;
-    animation-delay: 1.5s;
+    animation-delay: 1s;
 }
 
 /* Arrow slide animation */
