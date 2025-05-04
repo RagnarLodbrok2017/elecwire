@@ -12,6 +12,13 @@
     transform: translateY(-50px);
 }
 
+/* Add fade-in animation for navbar-inner's border */
+.navbar-inner {
+    border-bottom: 1px solid transparent;
+    animation: navBorderFadeIn 1.5s ease forwards;
+    animation-delay: 1s;
+}
+
 /* Initially hide all nav links */
 .nav-item:nth-child(1) .nav-link {
     opacity: 0;
@@ -451,6 +458,16 @@
     to {
         opacity: 1;
         transform: translateY(0);
+    }
+}
+
+/* Navbar border fade-in animation */
+@keyframes navBorderFadeIn {
+    0% {
+        border-bottom-color: transparent;
+    }
+    100% {
+        border-bottom-color: rgba(255, 255, 255, 0.1);
     }
 }
 
