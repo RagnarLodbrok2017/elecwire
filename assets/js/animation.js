@@ -151,6 +151,94 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log("Why Us section not found");
     }
     
+    // Progress section animation trigger
+    const progressSection = document.getElementById('progress');
+    
+    if (progressSection) {
+        console.log("Progress section found, setting up observer");
+        
+        // Safety timeout for progress section
+        setTimeout(() => {
+            if (!progressSection.classList.contains('in-view')) {
+                console.log("Safety timeout triggered, forcing progress section animation");
+                progressSection.classList.add('in-view');
+            }
+        }, 7000); // 7 second safety timeout
+        
+        const progressObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                console.log("Progress section intersection status:", entry.isIntersecting);
+                
+                if (entry.isIntersecting) {
+                    progressSection.classList.add('in-view');
+                    console.log("Added in-view class to progress section");
+                    progressObserver.unobserve(progressSection);
+                }
+            });
+        }, {
+            threshold: 0.1, // Trigger when just 10% of the section is visible
+            rootMargin: '-100px 0px'
+        });
+        
+        progressObserver.observe(progressSection);
+        
+        // Also trigger the animation when the user scrolls to progress section
+        window.addEventListener('scroll', function() {
+            const progressSectionTop = progressSection.getBoundingClientRect().top;
+            
+            if (progressSectionTop < window.innerHeight * 0.8 && !progressSection.classList.contains('in-view')) {
+                console.log("Scroll-based trigger for progress section");
+                progressSection.classList.add('in-view');
+            }
+        });
+    } else {
+        console.log("Progress section not found");
+    }
+    
+    // Contact section animation trigger
+    const contactSection = document.getElementById('contact');
+    
+    if (contactSection) {
+        console.log("Contact section found, setting up observer");
+        
+        // Safety timeout for contact section
+        setTimeout(() => {
+            if (!contactSection.classList.contains('in-view')) {
+                console.log("Safety timeout triggered, forcing contact section animation");
+                contactSection.classList.add('in-view');
+            }
+        }, 8000); // 8 second safety timeout
+        
+        const contactObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                console.log("Contact section intersection status:", entry.isIntersecting);
+                
+                if (entry.isIntersecting) {
+                    contactSection.classList.add('in-view');
+                    console.log("Added in-view class to contact section");
+                    contactObserver.unobserve(contactSection);
+                }
+            });
+        }, {
+            threshold: 0.1, // Trigger when just 10% of the section is visible
+            rootMargin: '-100px 0px'
+        });
+        
+        contactObserver.observe(contactSection);
+        
+        // Also trigger the animation when the user scrolls to contact section
+        window.addEventListener('scroll', function() {
+            const contactSectionTop = contactSection.getBoundingClientRect().top;
+            
+            if (contactSectionTop < window.innerHeight * 0.8 && !contactSection.classList.contains('in-view')) {
+                console.log("Scroll-based trigger for contact section");
+                contactSection.classList.add('in-view');
+            }
+        });
+    } else {
+        console.log("Contact section not found");
+    }
+    
     // Navbar scroll effect
     const navbar = document.querySelector('.navbar');
     

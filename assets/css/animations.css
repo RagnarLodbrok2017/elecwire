@@ -513,4 +513,118 @@
 
 .progress-chart-image:hover {
     transform: scale(1.02);
+}
+
+/* ------------- PROGRESS SECTION ANIMATIONS ------------- */
+
+/* Progress charts animation */
+#progress .progress-chart-container {
+    opacity: 0;
+    transform: translateY(200px);
+    animation: progressChartsIn 1s ease forwards;
+    animation-play-state: paused;
+}
+
+#progress.in-view .progress-chart-container {
+    animation-play-state: running;
+    animation-delay: 1s;
+}
+
+/* Progress circle animation */
+@keyframes progressCircleIn {
+    0% {
+        opacity: 0;
+        transform: translateY(300px);
+    }
+    60% {
+        opacity: 0.6;
+    }
+    100% {
+        opacity: 0.8;
+        transform: translateY(0);
+    }
+}
+
+/* Progress charts animation */
+@keyframes progressChartsIn {
+    0% {
+        opacity: 0;
+        transform: translateY(200px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Right to left animation for services heading */
+@keyframes fadeInRightToLeft {
+    from {
+        opacity: 0;
+        transform: translateX(500px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* ------------- CONTACT SECTION ANIMATIONS ------------- */
+
+/* Contact info animation - from bottom */
+#contact .contact-info {
+    opacity: 0;
+    transform: translateY(100px);
+    animation: contactElementsIn 1s ease forwards;
+    animation-play-state: paused;
+}
+
+#contact.in-view .contact-info {
+    animation-play-state: running;
+}
+
+/* Contact form animation - from bottom */
+#contact .contact-form-container {
+    opacity: 0;
+    transform: translateY(100px);
+    animation: contactElementsIn 1s ease forwards;
+    animation-play-state: paused;
+}
+
+#contact.in-view .contact-form-container {
+    animation-play-state: running;
+}
+
+/* Footer background image animation - fade in after elements appear */
+#contact .footer-background-img {
+    opacity: 0;
+    animation: footerBgFadeIn 1.5s ease forwards;
+    animation-play-state: paused;
+}
+
+#contact.in-view .footer-background-img {
+    animation-play-state: running;
+    animation-delay: 0.8s; /* Start after contact elements have appeared */
+}
+
+/* Contact elements animation */
+@keyframes contactElementsIn {
+    0% {
+        opacity: 0;
+        transform: translateY(100px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Footer background fade in animation */
+@keyframes footerBgFadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 } 
