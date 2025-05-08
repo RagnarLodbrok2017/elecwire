@@ -8,3 +8,10 @@
 - Set .brand-name font-family to 'Orbitron', sans-serif for branding consistency 
 - Aligned .hero-subtitle h1 left and .lets-talk right for better hero subtitle layout in style.css 
 - Wrapped navbar content in .navbar-inner and added border-bottom: 1px solid #707070 for visual separation 
+- Implemented advanced gallery transitions with synchronized opacity (old slide fades out as new slide fades in)
+- Added 3D perspective transforms to gallery slides for more engaging transitions in style.css
+- Enhanced gallery slide animations by tracking previous and current slides in main.js
+- Modified animations.css to ensure smooth gallery transitions with animation timing adjustments
+- Increased gallery slide transition duration from 0.6s to 1.5s for smoother crossfade effects
+- Removed position animations from gallery slides for cleaner transitions with only opacity changes
+- Added animation lock to prevent rapid-clicking gallery navigation buttons during transitions

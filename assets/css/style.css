@@ -713,6 +713,8 @@ html {
 .gallery-carousel {
     position: relative;
     width: 100%;
+    min-height: 64vh;
+    perspective: 1000px;
 }
 
 .gallery-flex-container {
@@ -722,21 +724,49 @@ html {
     width: 100%;
     overflow: hidden;
     height: 64vh;
+    opacity: 0;
+    transition: opacity 1.5s ease;
+    position: absolute;
+    left: 0;
+    right: 0;
+    visibility: hidden;
 }
 
 .gallery-flex-container.active {
     display: flex;
     opacity: 1;
     position: relative;
+    visibility: visible;
+    z-index: 2;
 }
 
-/* Gallery slides transition effect */
-.gallery-flex-container {
-    opacity: 0;
-    transition: opacity 0.5s ease;
+/* New classes for transition effects */
+.gallery-flex-container.previous {
     position: absolute;
-    left: 0;
-    right: 0;
+    display: flex;
+    opacity: 1;
+    visibility: visible;
+    z-index: 1;
+    animation: fadeOutStatic 1.5s ease forwards;
+}
+
+.gallery-flex-container.next-in {
+    position: absolute;
+    display: flex;
+    opacity: 0;
+    visibility: visible;
+    z-index: 2;
+    animation: fadeInStatic 1.5s ease forwards;
+}
+
+@keyframes fadeOutStatic {
+    0% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+@keyframes fadeInStatic {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
 }
 
 /* Gallery slide 01 specific styles */

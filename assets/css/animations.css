@@ -415,18 +415,9 @@
 
 /* ------------- GALLERY ANIMATIONS ------------- */
 
-/* Gallery slides transition effect */
+/* Gallery transitions */
 .gallery-flex-container {
-    opacity: 0;
-    transition: opacity 0.5s ease;
-    position: absolute;
-    left: 0;
-    right: 0;
-}
-
-.gallery-flex-container.active {
-    opacity: 1;
-    position: relative;
+    transition: opacity 1.5s ease;
 }
 
 /* Gallery image hover effects */

@@ -130,6 +130,8 @@ document.addEventListener('DOMContentLoaded', function() {
         const gallerySlides = document.querySelectorAll('.gallery-flex-container');
         const totalSlides = gallerySlides.length;
         let currentSlideIndex = 0; // First slide is active by default
+        let previousSlideIndex = null;
+        let isAnimating = false; // Add this to prevent rapid clicks
         
         // Get all navigation buttons
         const prevButtons = document.querySelectorAll('.prev-btn');
@@ -138,6 +140,13 @@ document.addEventListener('DOMContentLoaded', function() {
         // Add click event to all previous buttons
         prevButtons.forEach(btn => {
             btn.addEventListener('click', function() {
+                // Prevent rapid clicks during animation
+                if (isAnimating) return;
+                isAnimating = true;
+                
+                // Store previous slide index
+                previousSlideIndex = currentSlideIndex;
+                
                 // Calculate the previous slide index (with loop back to last slide)
                 currentSlideIndex = (currentSlideIndex - 1 + totalSlides) % totalSlides;
                 updateActiveSlide();
@@ -147,6 +156,13 @@ document.addEventListener('DOMContentLoaded', function() {
         // Add click event to all next buttons
         nextButtons.forEach(btn => {
             btn.addEventListener('click', function() {
+                // Prevent rapid clicks during animation
+                if (isAnimating) return;
+                isAnimating = true;
+                
+                // Store previous slide index
+                previousSlideIndex = currentSlideIndex;
+                
                 // Calculate the next slide index (with loop back to first slide)
                 currentSlideIndex = (currentSlideIndex + 1) % totalSlides;
                 updateActiveSlide();
@@ -155,13 +171,39 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Function to update which slide is active
         function updateActiveSlide() {
-            // Remove 'active' class from all slides
+            // Remove transition classes from all slides
             gallerySlides.forEach(slide => {
-                slide.classList.remove('active');
+                slide.classList.remove('active', 'previous', 'next-in');
+                slide.style.display = 'none';
             });
             
-            // Add 'active' class to current slide
-            gallerySlides[currentSlideIndex].classList.add('active');
+            // Set up the exiting slide (previous)
+            if (previousSlideIndex !== null) {
+                gallerySlides[previousSlideIndex].classList.add('previous');
+                gallerySlides[previousSlideIndex].style.display = 'flex';
+                
+                // Add the next slide with entering transition
+                gallerySlides[currentSlideIndex].classList.add('next-in');
+                gallerySlides[currentSlideIndex].style.display = 'flex';
+                
+                // After transition completes, clean up the previous slide
+                setTimeout(() => {
+                    if (gallerySlides[previousSlideIndex]) {
+                        gallerySlides[previousSlideIndex].classList.remove('previous');
+                        gallerySlides[previousSlideIndex].style.display = 'none';
+                    }
+                    gallerySlides[currentSlideIndex].classList.remove('next-in');
+                    gallerySlides[currentSlideIndex].classList.add('active');
+                    
+                    // Reset animation flag
+                    isAnimating = false;
+                }, 1500); // Match this to the CSS transition duration
+            } else {
+                // Initial load, just show the active slide
+                gallerySlides[currentSlideIndex].classList.add('active');
+                gallerySlides[currentSlideIndex].style.display = 'flex';
+                isAnimating = false;
+            }
         }
     }
     
