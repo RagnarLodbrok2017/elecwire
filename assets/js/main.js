@@ -1,10 +1,60 @@
 $(document).ready(function() {
+    // Previous position to detect jumps
+    let previousPosition = 0;
+    
     // Navbar scroll effect
     $(window).scroll(function() {
         if ($(window).scrollTop() > 50) {
             $('.navbar').addClass('scrolled');
         } else {
             $('.navbar').removeClass('scrolled');
+        }
+        
+        // Make the services fixed column behave correctly with first and last service items
+        const servicesSection = $('#services');
+        if (servicesSection.length) {
+            const rightColumn = $('.services-fixed-column');
+            const serviceItems = $('.services-item');
+            const firstItem = serviceItems.first();
+            const lastItem = serviceItems.last();
+            
+            if (firstItem.length && lastItem.length) {
+                const firstItemTop = firstItem.offset().top;
+                const lastItemTop = lastItem.offset().top;
+                const scrollTop = $(window).scrollTop();
+                const navbarHeight = 90; // Navbar height in pixels
+                const sectionTop = servicesSection.offset().top;
+                
+                // Always show the fixed column
+                rightColumn.css('opacity', '1');
+                
+                // Before reaching the first service item
+                if (scrollTop < firstItemTop - 90) {
+                    // Keep it aligned with first service item
+                    rightColumn.css({
+                        'position': 'absolute',
+                        'top': (firstItemTop - sectionTop) + 'px',
+                        'right': '6%'
+                    });
+                }
+                // When we reach the last service item
+                else if (scrollTop >= lastItemTop - 90) {
+                    // Switch to absolute positioning to stay with last item
+                    rightColumn.css({
+                        'position': 'absolute',
+                        'top': (lastItemTop - sectionTop) + 'px',
+                        'right': '6%'
+                    });
+                } 
+                // For scrolling between first and last items, stay fixed at navbar height
+                else {
+                    rightColumn.css({
+                        'position': 'fixed',
+                        'top': navbarHeight + 'px',
+                        'right': '6%'
+                    });
+                }
+            }
         }
     });
 
@@ -14,6 +64,16 @@ $(document).ready(function() {
         $('html, body').animate({
             scrollTop: $($(this).attr('href')).offset().top - 70
         }, 500, 'linear');
+    });
+
+    // Initialize column position on load
+    $(window).on('load', function() {
+        $(window).trigger('scroll');
+    });
+
+    // Also trigger on resize
+    $(window).on('resize', function() {
+        $(window).trigger('scroll');
     });
 
     // Fade in animation on scroll
