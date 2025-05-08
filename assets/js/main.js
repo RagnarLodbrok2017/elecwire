@@ -1,4 +1,7 @@
 $(document).ready(function() {
+    // Handle page loading when video is ready
+    handlePageLoading();
+    
     // Previous position to detect jumps
     let previousPosition = 0;
     
@@ -122,6 +125,72 @@ $(document).ready(function() {
         });
     });
 });
+
+// Function to handle page loading when video is ready
+function handlePageLoading() {
+    const video = document.getElementById('background-video');
+    const pageLoader = document.getElementById('page-loader');
+    const afterVideoImg = document.getElementById('after-video-img');
+    
+    // If there's no video, hide loader immediately
+    if (!video || !pageLoader) {
+        if (pageLoader) {
+            hideLoader();
+        }
+        return;
+    }
+    
+    // Track if video is loaded from cache
+    let videoLoaded = false;
+    
+    // Function to hide the loader
+    function hideLoader() {
+        pageLoader.style.opacity = '0';
+        setTimeout(() => {
+            pageLoader.style.visibility = 'hidden';
+        }, 500);
+    }
+    
+    // Check for cached video
+    if (video.readyState >= 3) {
+        console.log("Video already loaded from cache");
+        videoLoaded = true;
+        hideLoader();
+    }
+    
+    // Video can play through (fully loaded)
+    video.addEventListener('canplaythrough', function() {
+        console.log("Video can play through");
+        // Only respond if we haven't already loaded
+        if (!videoLoaded) {
+            videoLoaded = true;
+            hideLoader();
+        }
+    });
+    
+    // Also handle video loading error
+    video.addEventListener('error', function(e) {
+        console.error("Video loading error:", e);
+        videoLoaded = true;
+        hideLoader();
+    });
+    
+    // Handle video ended event
+    video.addEventListener('ended', function() {
+        console.log("Video ended");
+        video.style.display = 'none';
+        afterVideoImg.style.display = 'block';
+    });
+    
+    // Fallback - hide loader after maximum wait time (10 seconds)
+    setTimeout(function() {
+        if (!videoLoaded) {
+            console.log("Force loading complete after timeout");
+            videoLoaded = true;
+            hideLoader();
+        }
+    }, 10000);
+}
 
 document.addEventListener('DOMContentLoaded', function() {
     // Gallery Carousel functionality

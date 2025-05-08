@@ -15,3 +15,6 @@
 - Increased gallery slide transition duration from 0.6s to 1.5s for smoother crossfade effects
 - Removed position animations from gallery slides for cleaner transitions with only opacity changes
 - Added animation lock to prevent rapid-clicking gallery navigation buttons during transitions
+- Added full-page loader to ensure video is completely loaded before displaying website
+- Implemented video loading optimization with reliable fallbacks for slow connections
+- Added preload="auto" attribute to the header video for faster loading on supported browsers
