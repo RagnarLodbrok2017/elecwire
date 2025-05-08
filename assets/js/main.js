@@ -151,63 +151,80 @@ function handlePageLoading() {
     const pageLoader = document.getElementById('page-loader');
     const afterVideoImg = document.getElementById('after-video-img');
     
-    // If there's no video, hide loader immediately
-    if (!video || !pageLoader) {
-        if (pageLoader) {
-            hideLoader();
-        }
+    // If there's no page loader, exit early
+    if (!pageLoader) {
         return;
     }
     
-    // Track if video is loaded from cache
+    // Track if video and page are loaded
     let videoLoaded = false;
+    let pageLoaded = false;
     
-    // Function to hide the loader
+    // Function to hide the loader only when both video and page are loaded
     function hideLoader() {
-        pageLoader.style.opacity = '0';
-        setTimeout(() => {
-            pageLoader.style.visibility = 'hidden';
-        }, 500);
+        if (videoLoaded && pageLoaded) {
+            console.log("Both video and page fully loaded, hiding loader");
+            pageLoader.style.opacity = '0';
+            setTimeout(() => {
+                pageLoader.style.visibility = 'hidden';
+            }, 500);
+        } else {
+            console.log("Still waiting for full page load. Video loaded: " + videoLoaded + ", Page loaded: " + pageLoaded);
+        }
     }
     
-    // Check for cached video
-    if (video.readyState >= 3) {
-        console.log("Video already loaded from cache");
-        videoLoaded = true;
-        hideLoader();
-    }
-    
-    // Video can play through (fully loaded)
-    video.addEventListener('canplaythrough', function() {
-        console.log("Video can play through");
-        // Only respond if we haven't already loaded
-        if (!videoLoaded) {
+    // Handle video loading
+    if (video) {
+        // Check for cached video
+        if (video.readyState >= 3) {
+            console.log("Video already loaded from cache");
             videoLoaded = true;
             hideLoader();
         }
-    });
-    
-    // Also handle video loading error
-    video.addEventListener('error', function(e) {
-        console.error("Video loading error:", e);
+        
+        // Video can play through (fully loaded)
+        video.addEventListener('canplaythrough', function() {
+            console.log("Video can play through");
+            // Only respond if we haven't already loaded
+            if (!videoLoaded) {
+                videoLoaded = true;
+                hideLoader();
+            }
+        });
+        
+        // Also handle video loading error
+        video.addEventListener('error', function(e) {
+            console.error("Video loading error:", e);
+            videoLoaded = true;
+            hideLoader();
+        });
+        
+        // Handle video ended event
+        video.addEventListener('ended', function() {
+            console.log("Video ended");
+            video.style.display = 'none';
+            afterVideoImg.style.display = 'block';
+        });
+    } else {
+        // No video element, mark video as loaded
         videoLoaded = true;
         hideLoader();
-    });
+    }
     
-    // Handle video ended event
-    video.addEventListener('ended', function() {
-        console.log("Video ended");
-        video.style.display = 'none';
-        afterVideoImg.style.display = 'block';
+    // Wait for the entire page to load
+    window.addEventListener('load', function() {
+        console.log("Window load event fired");
+        pageLoaded = true;
+        hideLoader();
     });
-    
+            
     // Fallback - hide loader after maximum wait time (10 seconds)
     setTimeout(function() {
-        if (!videoLoaded) {
-            console.log("Force loading complete after timeout");
-            videoLoaded = true;
-            hideLoader();
-        }
+        console.log("Force loading complete after timeout");
+        // Force both video and page to be considered loaded after timeout
+        videoLoaded = true;
+        pageLoaded = true;
+        hideLoader();
     }, 10000);
 }
 
