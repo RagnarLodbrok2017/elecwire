@@ -14,7 +14,6 @@
 
 /* Add fade-in animation for navbar-inner's border */
 .navbar-inner {
-    border-bottom: 1px solid transparent;
     animation: navBorderFadeIn 1.5s ease forwards;
     animation-delay: 1s;
 }
@@ -452,7 +451,7 @@
         border-bottom-color: transparent;
     }
     100% {
-        border-bottom-color: rgba(255, 255, 255, 0.1);
+        border-bottom-color: rgba(255, 255, 255, 0.7);
     }
 }
 
