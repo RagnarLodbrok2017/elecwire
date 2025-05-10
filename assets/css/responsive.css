@@ -146,7 +146,8 @@
     }
     
     .services-3d-visual {
-        margin-top: 5rem;
+        margin-top: 1rem;
+        width: 37vw;
     }
     
     /* Why Us Section */
@@ -155,7 +156,7 @@
     }
     
     .why-us-paragraph {
-        margin-bottom: 9rem;
+        margin-bottom: 7rem;
         line-height: 1.35;
     }
     
@@ -179,7 +180,7 @@
     
     .whyus-section .services-list {
         margin-left: 5.5rem;
-        min-height: 420px;
+        min-height: 385px;
     }
     
     .whyus-section .service-text {
@@ -204,8 +205,22 @@
     
     .gallery-flex-container {
         height: 60vh;
+        flex-wrap: nowrap;
+        gap: 1.5%;
     }
-    
+    .gallery-flex-main{
+        flex-basis: 42.7%;
+    }
+    .gallery-flex-second {
+        flex-basis: 23%;
+    }
+    .gallery-flex-nav {
+        flex-basis: 13.4%;
+    }
+    .gallery-flex-fourth {
+        flex-basis: 13.5%;
+        display: flex;
+    }
     .gallery-number-box {
         font-size: 5.8rem;
         padding: 0 8px;
@@ -278,7 +293,7 @@
     /* Contact Section */
     .contact-section {
         height: 95vh;
-        padding: 90px 0;
+        padding: 30px 0;
     }
     
     .contact-info {
@@ -291,7 +306,7 @@
     }
     
     .footer-brand {
-        font-size: 2.3rem;
+        font-size: 2rem;
     }
     
     .footer-tagline {
@@ -300,7 +315,7 @@
     }
     
     .footer-tagline p {
-        font-size: 1.2rem;
+        font-size: 1rem;
     }
     
     .contact-details {
@@ -313,26 +328,26 @@
     }
     
     .contact-icon {
-        font-size: 1.4rem;
+        font-size: 1.2rem;
         margin-right: 0.9rem;
         margin-top: 0.2rem;
     }
     
     .contact-text p {
-        font-size: 1.2rem;
+        font-size: 0.9rem;
     }
     
     .contact-form-container {
-        padding: 1.8rem;
+        padding: 0 1.8rem 1.8rem 1.8rem;
     }
     
     .contact-title {
-        font-size: 2.7rem;
-        margin-bottom: 1.8rem;
+        font-size: 2.3rem;
+        margin-bottom: 1.5rem;
     }
     
     .contact-title i {
-        font-size: 2.2rem;
+        font-size: 1.8rem;
         margin-left: 0.9rem;
     }
     
@@ -346,13 +361,13 @@
     
     .contact-input,
     .contact-textarea {
-        font-size: 1.2rem;
-        padding: 1.3rem;
+        font-size: 0.9rem;
+        padding: 1rem;
     }
     
     .contact-input:focus,
     .contact-textarea:focus {
-        padding: 1.3rem;
+        padding: 1rem;
     }
     
     .contact-textarea {
@@ -409,6 +424,8 @@
     
     .gallery-flex-container {
         height: 58vh;
+        flex-wrap: nowrap;
+        gap: 1.5%;
     }
     
     .whyus-section .service-text {
@@ -461,7 +478,7 @@
     /* Contact section */
     .contact-section {
         height: auto;
-        padding: 80px 0;
+        padding: 25px 0;
     }
     
     .contact-info {
