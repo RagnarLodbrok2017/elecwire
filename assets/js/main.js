@@ -5,6 +5,44 @@ $(document).ready(function() {
     // Previous position to detect jumps
     let previousPosition = 0;
     
+    // Scroll indicator functionality
+    function updateScrollIndicator() {
+        const scrollTop = $(window).scrollTop();
+        const docHeight = $(document).height();
+        const winHeight = $(window).height();
+        const scrollPercent = (scrollTop / (docHeight - winHeight)) * 100;
+        
+        // Update the scroll bar fill height (not width)
+        $('.scroll-bar-fill').css('height', scrollPercent + '%');
+        
+        // Show the scroll indicator when past the hero section, hide it otherwise
+        const heroSectionHeight = $('.hero-section').outerHeight();
+        
+        if (scrollTop > heroSectionHeight / 2) {
+            $('.scroll-indicator-container').addClass('visible');
+        } else {
+            $('.scroll-indicator-container').removeClass('visible');
+        }
+    }
+    
+    // Initialize scroll indicator on page load
+    updateScrollIndicator();
+    
+    // Update scroll indicator on scroll
+    $(window).scroll(function() {
+        updateScrollIndicator();
+    });
+    
+    // Add cursor pointer to scroll indicator on hover
+    $('.scroll-indicator-container').css('cursor', 'pointer');
+    
+    // Scroll to top when clicking the scroll indicator
+    $('.scroll-indicator-container').on('click', function() {
+        $('html, body').animate({
+            scrollTop: 0
+        }, 800, 'linear');
+    });
+    
     // Navbar scroll effect
     $(window).scroll(function() {
         if ($(window).scrollTop() > 50) {

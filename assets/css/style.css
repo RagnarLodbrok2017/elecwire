@@ -133,6 +133,67 @@
     100% { width: 0%; }
 }
 
+
+/* ==========================================================================
+   CUSTOM SCROLL INDICATOR
+   ========================================================================== */
+   .scroll-indicator-container {
+    position: fixed;
+    right: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 100;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.scroll-indicator-container.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.scroll-text {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    transform: rotate(180deg);
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.8rem;
+    letter-spacing: 1.5px;
+    color: var(--text-light);
+    margin-bottom: 10px;
+}
+
+.scroll-bar-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+}
+
+.scroll-bar-track {
+    width: 8px;
+    height: 150px;
+    background-color: transparent;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--primary-text);
+}
+
+.scroll-bar-fill {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--primary-color);
+    height: 0%;
+    transition: height 0.1s ease;
+}
+
+
 /* ==========================================================================
    GLOBAL STYLES
    ========================================================================== */
