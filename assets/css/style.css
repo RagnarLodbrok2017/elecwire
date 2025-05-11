@@ -283,25 +283,18 @@ html {
     z-index: 1;
 }
 
-.hero-background img {
-    width: 100%;
-    height: 100%;
-    object-fit: fill;
-    opacity: 0.8;
-}
-
 #background-video {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    opacity: 0.8;
+    opacity: 0.9;
 }
 
 #after-video-img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    opacity: 0.8;
+    opacity: 0.9;
 }
 
 .hero-gradient {
