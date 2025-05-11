@@ -5,6 +5,9 @@ $(document).ready(function() {
     // Previous position to detect jumps
     let previousPosition = 0;
     
+    // Keep track of the last active section
+    let lastActiveSection = '';
+    
     // Scroll indicator functionality
     function updateScrollIndicator() {
         const scrollTop = $(window).scrollTop();
@@ -25,12 +28,107 @@ $(document).ready(function() {
         }
     }
     
+    // Function to update active nav link based on scroll position
+    function updateActiveNavLink() {
+        const scrollPosition = $(window).scrollTop() + 100; // Reduced offset for better precision
+        let currentActiveSection = null;
+        
+        // Get the hero section first
+        const heroSection = $('.hero-section');
+        let heroTop = 0;
+        let heroBottom = 0;
+        
+        if (heroSection.length) {
+            heroTop = heroSection.offset().top;
+            heroBottom = heroTop + heroSection.outerHeight();
+            
+            // If we're in the hero section
+            if (scrollPosition >= heroTop && scrollPosition <= heroBottom) {
+                currentActiveSection = '';  // Home link has empty section ID
+            }
+        }
+        
+        // Special handling for about section - activate when within 150px of top
+        const aboutSection = $('#about');
+        if (aboutSection.length) {
+            const aboutTop = aboutSection.offset().top - 150; // Activate 150px before reaching the section
+            const aboutBottom = aboutTop + aboutSection.outerHeight();
+            
+            if (scrollPosition >= aboutTop && scrollPosition <= aboutBottom) {
+                currentActiveSection = 'about';
+            }
+        }
+        
+        // Check all other sections with IDs (except about which we handled specially)
+        $('section[id]').each(function() {
+            if ($(this).attr('id') === 'about') {
+                return; // Skip about section as we handled it specially
+            }
+            
+            const sectionTop = $(this).offset().top;
+            const sectionBottom = sectionTop + $(this).outerHeight();
+            const sectionId = $(this).attr('id');
+            
+            // If we're in this section
+            if (scrollPosition >= sectionTop && scrollPosition <= sectionBottom) {
+                currentActiveSection = sectionId;
+                return false; // Break the loop
+            }
+        });
+        
+        // If we're at the very bottom of the page, activate contact
+        if ($(window).scrollTop() + $(window).height() > $(document).height() - 0) {
+            currentActiveSection = 'contact';
+        }
+        
+        // If we're at the very top, it's home
+        if ($(window).scrollTop() < 50) {
+            currentActiveSection = '';
+        }
+        
+        // If we found an active section, update it
+        if (currentActiveSection !== null) {
+            // First reset all navlinks
+            $('.nav-link').removeClass('active').css('color', '#ffffff');
+            
+            if (currentActiveSection === '') {
+                // Home link
+                $('.nav-link[href="#"]').addClass('active').css('color', 'var(--primary-color)');
+            } else {
+                // Section link
+                $('.nav-link[href="#' + currentActiveSection + '"]').addClass('active').css('color', 'var(--primary-color)');
+            }
+            
+            // Update the last active section
+            lastActiveSection = currentActiveSection;
+        } else if (lastActiveSection !== null) {
+            // No active section found, but we have a last active section
+            // Keep the last active section's link highlighted
+            $('.nav-link').removeClass('active').css('color', '#ffffff');
+            
+            if (lastActiveSection === '') {
+                $('.nav-link[href="#"]').addClass('active').css('color', 'var(--primary-color)');
+            } else {
+                $('.nav-link[href="#' + lastActiveSection + '"]').addClass('active').css('color', 'var(--primary-color)');
+            }
+        } else {
+            // No active section and no last active section, default to home
+            $('.nav-link').removeClass('active').css('color', '#ffffff');
+            $('.nav-link[href="#"]').addClass('active').css('color', 'var(--primary-color)');
+        }
+    }
+    
+    // Add active class styling
+    $('<style>.nav-link.active { color: var(--primary-color) !important; }</style>').appendTo('head');
+    
     // Initialize scroll indicator on page load
     updateScrollIndicator();
+    updateActiveNavLink();
     
-    // Update scroll indicator on scroll
+    // Update on scroll
     $(window).scroll(function() {
         updateScrollIndicator();
+        updateActiveNavLink();
     });
     
     // Add cursor pointer to scroll indicator on hover
@@ -41,6 +139,111 @@ $(document).ready(function() {
         $('html, body').animate({
             scrollTop: 0
         }, 800, 'linear');
+    });
+    
+    // Make clicked nav links active immediately
+    $('.nav-link').on('click', function(e) {
+        // Remove active class from all links
+        $('.nav-link').removeClass('active').css('color', '#ffffff');
+        
+        // Add active class to clicked link
+        $(this).addClass('active').css('color', 'var(--primary-color)');
+        
+        // Get the href attribute
+        const href = $(this).attr('href');
+        
+        // Special handling for contact link
+        if (href === '#contact') {
+            e.preventDefault();
+            
+            // Find the contact section or footer
+            const contactSection = $('.contact-section');
+            
+            if (contactSection.length) {
+                // Scroll to the contact section
+                $('html, body').animate({
+                    scrollTop: contactSection.offset().top
+                }, 800, 'linear');
+            } else {
+                // If no contact section, scroll to the very bottom
+                $('html, body').animate({
+                    scrollTop: 999999 // A very large number to ensure scrolling to bottom
+                }, 800, 'linear');
+            }
+            
+            // Update lastActiveSection
+            lastActiveSection = 'contact';
+            return;
+        }
+        
+        // Special handling for about link with -120px offset
+        if (href === '#about') {
+            e.preventDefault();
+            
+            const aboutSection = $('#about');
+            if (aboutSection.length) {
+                $('html, body').animate({
+                    scrollTop: aboutSection.offset().top - 120
+                }, 800, 'linear');
+                
+                // Update lastActiveSection
+                lastActiveSection = 'about';
+                return;
+            }
+        }
+        
+        // Special handling for gallery link with -80px offset
+        if (href === '#gallery') {
+            e.preventDefault();
+            
+            const gallerySection = $('#gallery');
+            if (gallerySection.length) {
+                $('html, body').animate({
+                    scrollTop: gallerySection.offset().top + 50
+                }, 800, 'linear');
+                
+                // Update lastActiveSection
+                lastActiveSection = 'gallery';
+                return;
+            }
+        }
+        
+        // If it's a section link, update the lastActiveSection
+        if (href === '#') {
+            lastActiveSection = '';
+        } else if (href.startsWith('#')) {
+            lastActiveSection = href.substring(1); // Remove the # character
+        }
+        
+        // The smooth scrolling is already handled in the existing code
+    });
+    
+    // Override the default smooth scrolling for all links
+    $('a[href*="#"]').on('click', function(e) {
+        const href = $(this).attr('href');
+        
+        // Don't override for links with special handling
+        if (href === '#contact' || href === '#about' || href === '#gallery') {
+            return;
+        }
+        
+        // If it's the home link (href="#"), scroll to top
+        if (href === '#') {
+            e.preventDefault();
+            $('html, body').animate({
+                scrollTop: 0
+            }, 500, 'linear');
+        }
+        // For all other links, use the standard behavior with a 70px offset
+        else if (href.startsWith('#')) {
+            e.preventDefault();
+            const targetSection = $(href);
+            if (targetSection.length) {
+                $('html, body').animate({
+                    scrollTop: targetSection.offset().top - 70
+                }, 500, 'linear');
+            }
+        }
     });
     
     // Navbar scroll effect
@@ -96,33 +299,6 @@ $(document).ready(function() {
                     });
                 }
             }
-        }
-    });
-
-    // Smooth scrolling for navigation links
-    $('a[href*="#"]').on('click', function(e) {
-        e.preventDefault();
-        
-        // Get the href attribute
-        const href = $(this).attr('href');
-        
-        // If it's the home link (href="#"), scroll to top
-        if (href === '#') {
-            $('html, body').animate({
-                scrollTop: 0
-            }, 500, 'linear');
-        }
-        // If it's the gallery link, scroll to the gallery outline heading
-        else if (href === '#gallery') {
-            $('html, body').animate({
-                scrollTop: $('.gallery-outline-text').offset().top - 100
-            }, 500, 'linear');
-        }
-        // For all other links, use the standard behavior
-        else {
-            $('html, body').animate({
-                scrollTop: $(href).offset().top - 70
-            }, 500, 'linear');
         }
     });
 

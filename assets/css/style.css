@@ -388,7 +388,7 @@ html {
     width: 27rem;
     position: absolute;
     top: 63vh;
-    right: 0;
+    right: 10px;
 }
 
 .hero-subtitle h1 {
