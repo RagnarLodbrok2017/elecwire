@@ -439,6 +439,25 @@
         max-width: 960px;
     }
     
+    /* Navbar adjustments */
+    .navbar-toggler {
+        margin-left: auto;
+    }
+    
+    .navbar-collapse {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        left: 0;
+        background-color: var(--root-bg);
+        z-index: 1000;
+        padding: 1rem;
+    }
+    
+    section {
+        margin: 0;
+    }
+    
     .outline-heading h2 {
         font-size: 7rem;
         letter-spacing: -6px;
@@ -508,6 +527,38 @@
 @media (max-width: 768px) {
     .container {
         max-width: 720px;
+    }
+    
+    /* Navbar adjustments */
+    .navbar-toggler {
+        margin-left: auto;
+    }
+    
+    .navbar-collapse {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        left: 0;
+        background-color: var(--root-bg);
+        z-index: 1000;
+        padding: 1rem;
+        border-bottom: 1px solid var(--stroke-color);
+    }
+    
+    .nav-link {
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+    }
+    
+    /* Hero section */
+    .hero-section {
+        max-height: 36vh;
+        min-height: auto;
+    }
+    
+    /* Section adjustments */
+    section {
+        margin: 0;
     }
     
     .hero-subtitle {
@@ -589,27 +640,89 @@
         padding-right: 20px;
     }
     
+    /* Navbar adjustments */
+    .navbar-toggler {
+        margin-left: auto;
+    }
+    
+    .navbar-collapse {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        left: 0;
+        background-color: var(--root-bg);
+        z-index: 1000;
+        padding: 1rem;
+        border-bottom: 1px solid var(--stroke-color);
+    }
+    
+    .nav-link {
+        text-align: center;
+        padding: 0.75rem 1rem !important;
+    }
+    
+    /* Hero section */
+    .hero-section {
+        max-height: 33vh;
+        min-height: auto;
+    }
+    
+    /* Section adjustments */
+    section {
+        margin: 0;
+        padding: 50px 0;
+    }
+    
+    .hero-subtitle {
+        width: 53%;
+        margin-top: 16vh;
+        left: 45vw;
+        /* position: absolute; */
+    }
+    
     .hero-subtitle h1 {
-        font-size: 2.5rem;
+        font-size: 1.2rem;
     }
     
     .lets-talk span {
-        font-size: 2rem;
+        font-size: 1.1rem;
     }
     
     .lets-talk i {
-        font-size: 1.8rem;
+        font-size: 1.1rem;
+    }
+    
+    /* About section adjustments */
+    .display-1 {
+        text-align: left;
+    }
+    
+    .outline-heading {
+        margin-bottom: 1rem !important;
     }
     
     .outline-heading h2 {
         font-size: 4.5rem;
         letter-spacing: -3px;
-        text-align: center;
+        text-align: left;
     }
     
     .elecwire-title {
-        font-size: 3rem;
-        text-align: center;
+        font-size: 2.5rem;
+        text-align: left;
+        padding-left: 38px;
+    }
+    
+    .about-section .fas.fa-arrow-right.ms-5 {
+        font-size: 2rem;
+        margin-left: 10px !important;
+    }
+    
+    .about-content {
+        width: 100%;
+        font-size: 1rem;
+        padding: 0;
+        margin: 0;
     }
     
     .about-title-block {
@@ -690,21 +803,78 @@
         padding-right: 15px;
     }
     
+    /* Navbar adjustments */
+    .navbar-toggler {
+        margin-left: auto;
+    }
+    
+    .navbar-collapse {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        left: 0;
+        background-color: var(--root-bg);
+        z-index: 1000;
+        padding: 1rem;
+        border-bottom: 1px solid var(--stroke-color);
+    }
+    
+    .nav-link {
+        text-align: center;
+        padding: 0.5rem 1rem !important;
+    }
+    
+    /* Hero section */
+    .hero-section {
+        max-height: 25vh;
+        min-height: auto;
+    }
+    
+    /* Section adjustments */
+    section {
+        margin: 0;
+        padding: 50px 0;
+    }
+    
+    /* About section adjustments */
+    .display-1 {
+        text-align: left;
+    }
+    
+    .outline-heading {
+        margin-bottom: 1rem !important;
+    }
+    
+    .outline-heading h2 {
+        font-size: 3.5rem;
+        letter-spacing: -2px;
+        text-align: left;
+    }
+    
+    .elecwire-title {
+        font-size: 2.5rem;
+        text-align: left;
+        padding-left: 38px;
+    }
+    
+    .about-section .fas.fa-arrow-right.ms-5 {
+        font-size: 2rem;
+        margin-left: 10px !important;
+    }
+    
+    .about-content {
+        width: 100%;
+        font-size: 1rem;
+        padding: 0;
+        margin: 0;
+    }
+    
     .hero-subtitle h1 {
         font-size: 2rem;
     }
     
     .lets-talk span {
         font-size: 1.8rem;
-    }
-    
-    .outline-heading h2 {
-        font-size: 3.5rem;
-        letter-spacing: -2px;
-    }
-    
-    .elecwire-title {
-        font-size: 2.5rem;
     }
     
     .services-title {
