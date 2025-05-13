@@ -458,6 +458,17 @@
         margin: 0;
     }
     
+    /* Services section adjustments */
+    .services-fixed-column {
+        position: relative;
+        top: 0;
+        right: auto;
+        width: 100%;
+        max-width: 100%;
+        margin-bottom: 2rem;
+        opacity: 1 !important;
+    }
+    
     .outline-heading h2 {
         font-size: 7rem;
         letter-spacing: -6px;
@@ -559,6 +570,17 @@
     /* Section adjustments */
     section {
         margin: 0;
+    }
+    
+    /* Services section adjustments */
+    .services-fixed-column {
+        position: relative;
+        top: 0;
+        right: auto;
+        width: 100%;
+        max-width: 100%;
+        margin-bottom: 2rem;
+        opacity: 1 !important;
     }
     
     .hero-subtitle {
@@ -734,6 +756,28 @@
         margin-top: 2rem;
     }
     
+    /* Services section adjustments */
+    .services-fixed-column {
+        position: relative !important;
+        top: 0;
+        right: auto;
+        width: 100%;
+        max-width: 100%;
+        margin-bottom: 2rem;
+        opacity: 1 !important;
+        order: 1 !important;
+        display: none;
+    }
+    
+    .services-items-container {
+        order: 2 !important;
+    }
+    
+    .services-section .container {
+        display: flex;
+        flex-direction: column;
+    }
+    
     .services-outline-text {
         text-align: center;
     }
@@ -762,6 +806,11 @@
     
     .whyus-section .service-text {
         font-size: 1.4rem;
+    }
+    
+    /* Progress section adjustments */
+    .progress-circle-element {
+        top: 26%;
     }
     
     .gallery-flex-container.active {
@@ -834,6 +883,19 @@
     section {
         margin: 0;
         padding: 50px 0;
+    }
+    
+    /* Services section adjustments */
+    .services-fixed-column {
+        position: static !important;
+        display: block !important;
+        top: auto !important;
+        right: auto !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        margin-bottom: 2rem !important;
+        opacity: 1 !important;
+        transform: none !important;
     }
     
     /* About section adjustments */
