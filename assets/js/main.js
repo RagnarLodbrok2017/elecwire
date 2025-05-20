@@ -269,33 +269,50 @@ $(document).ready(function() {
                 const navbarHeight = 90; // Navbar height in pixels
                 const sectionTop = servicesSection.offset().top;
                 
-                // Always show the fixed column
-                rightColumn.css('opacity', '1');
+                // Check if we're in the services section
+                const windowHeight = $(window).height();
+                const servicesSectionBottom = sectionTop + servicesSection.outerHeight();
                 
-                // Before reaching the first service item
-                if (scrollTop < firstItemTop - 90) {
-                    // Keep it aligned with first service item
+                if (scrollTop + windowHeight > sectionTop && scrollTop < servicesSectionBottom) {
+                    // We're in the services section
+                    servicesSection.addClass('in-view');
+                    
+                    // Before reaching the first service item
+                    if (scrollTop < firstItemTop - 90) {
+                        // Keep it aligned with first service item
+                        rightColumn.css({
+                            'position': 'absolute',
+                            'top': (firstItemTop - sectionTop) + 'px',
+                            'right': '6%',
+                            'transform': 'translateY(0)'
+                        });
+                    }
+                    // When we reach the last service item
+                    else if (scrollTop >= lastItemTop - 90) {
+                        // Switch to absolute positioning to stay with last item
+                        rightColumn.css({
+                            'position': 'absolute',
+                            'top': (lastItemTop - sectionTop) + 'px',
+                            'right': '6%',
+                            'transform': 'translateY(0)'
+                        });
+                    } 
+                    // For scrolling between first and last items, stay fixed at navbar height
+                    else {
+                        rightColumn.css({
+                            'position': 'fixed',
+                            'top': navbarHeight + 'px',
+                            'right': '6%',
+                            'transform': 'translateY(0)'
+                        });
+                    }
+                } else {
+                    // We're not in the services section
+                    servicesSection.removeClass('in-view');
+                    
+                    // Hide the fixed column with transform
                     rightColumn.css({
-                        'position': 'absolute',
-                        'top': (firstItemTop - sectionTop) + 'px',
-                        'right': '6%'
-                    });
-                }
-                // When we reach the last service item
-                else if (scrollTop >= lastItemTop - 90) {
-                    // Switch to absolute positioning to stay with last item
-                    rightColumn.css({
-                        'position': 'absolute',
-                        'top': (lastItemTop - sectionTop) + 'px',
-                        'right': '6%'
-                    });
-                } 
-                // For scrolling between first and last items, stay fixed at navbar height
-                else {
-                    rightColumn.css({
-                        'position': 'fixed',
-                        'top': navbarHeight + 'px',
-                        'right': '6%'
+                        'transform': 'translateY(20px)'
                     });
                 }
             }
@@ -378,10 +395,12 @@ function handlePageLoading() {
     function hideLoader() {
         if (videoLoaded && pageLoaded) {
             console.log("Both video and page fully loaded, hiding loader");
-            pageLoader.style.opacity = '0';
-            setTimeout(() => {
-                pageLoader.style.visibility = 'hidden';
-            }, 500);
+            pageLoader.classList.add('hidden');
+            
+            // Force a scroll event to properly position elements after loader is hidden
+            setTimeout(function() {
+                window.dispatchEvent(new Event('scroll'));
+            }, 100);
         } else {
             console.log("Still waiting for full page load. Video loaded: " + videoLoaded + ", Page loaded: " + pageLoaded);
         }
@@ -419,6 +438,15 @@ function handlePageLoading() {
             video.style.display = 'none';
             afterVideoImg.style.display = 'block';
         });
+        
+        // Add timeout for video loading as fallback
+        setTimeout(function() {
+            if (!videoLoaded) {
+                console.log("Video load timeout - forcing video loaded state");
+                videoLoaded = true;
+                hideLoader();
+            }
+        }, 5000);
     } else {
         // No video element, mark video as loaded
         videoLoaded = true;
@@ -431,15 +459,33 @@ function handlePageLoading() {
         pageLoaded = true;
         hideLoader();
     });
-            
-    // Fallback - hide loader after maximum wait time (10 seconds)
-    setTimeout(function() {
-        console.log("Force loading complete after timeout");
-        // Force both video and page to be considered loaded after timeout
-        videoLoaded = true;
+    
+    // Mark page as loaded if DOMContentLoaded already fired
+    if (document.readyState === 'complete' || document.readyState === 'interactive') {
+        console.log("Document already interactive/complete");
         pageLoaded = true;
         hideLoader();
-    }, 10000);
+    }
+            
+    // Fallback - hide loader after maximum wait time (8 seconds)
+    setTimeout(function() {
+        console.log("Force loading complete after timeout");
+        if (!videoLoaded || !pageLoaded) {
+            console.log("Forcing loader to hide after timeout");
+            // Force both video and page to be considered loaded after timeout
+            videoLoaded = true;
+            pageLoaded = true;
+            hideLoader();
+            
+            // Directly hide the loader in case the hideLoader function has issues
+            pageLoader.classList.add('hidden');
+            
+            // Force a scroll event to properly position elements
+            setTimeout(function() {
+                window.dispatchEvent(new Event('scroll'));
+            }, 100);
+        }
+    }, 8000);
 }
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -567,8 +613,36 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
+    // Initialize services section
+    function initServicesSection() {
+        // Hide services fixed column initially
+        const servicesSection = $('#services');
+        const rightColumn = $('.services-fixed-column');
+        
+        // Set initial state
+        if (servicesSection.length && rightColumn.length) {
+            const scrollTop = $(window).scrollTop();
+            const windowHeight = $(window).height();
+            const sectionTop = servicesSection.offset().top;
+            const servicesSectionBottom = sectionTop + servicesSection.outerHeight();
+            
+            // Check if services section is in view
+            if (scrollTop + windowHeight > sectionTop && scrollTop < servicesSectionBottom) {
+                servicesSection.addClass('in-view');
+            } else {
+                servicesSection.removeClass('in-view');
+            }
+        }
+    }
+    
     // Initialize all functionality
     initGalleryCarousel();
     handleVideoEnd();
     handleProgressMedia();
+    initServicesSection();
+    
+    // Trigger scroll event to position elements correctly
+    setTimeout(function() {
+        window.dispatchEvent(new Event('scroll'));
+    }, 200);
 }); 
