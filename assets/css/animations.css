@@ -69,18 +69,17 @@
 
 /* ------------- ABOUT SECTION ANIMATIONS ------------- */
 
-/* About heading animation */
-#about .outline-heading h2 {
+/* About heading animation - DISABLED FOR SCROLL ANIMATION */
+/* #about .outline-heading h2 {
     opacity: 0;
     transform: translateX(-500px);
     animation: fadeInLeftHighSpace 3.5s ease forwards;
     animation-play-state: paused;
 }
 
-/* When the section is in view, play the animation */
 #about.in-view .outline-heading h2 {
     animation-play-state: running;
-}
+} */
 
 /* About arrow animation */
 #about .elecwire-title .fa-arrow-right {
@@ -124,8 +123,8 @@
 
 /* ------------- SERVICES SECTION ANIMATIONS ------------- */
 
-/* Services heading animation - from right to left */
-#services .services-outline-text h2 {
+/* Services heading animation - DISABLED FOR SCROLL ANIMATION */
+/* #services .services-outline-text h2 {
     opacity: 0;
     transform: translateX(500px);
     animation: fadeInRightToLeft 3s ease forwards;
@@ -135,7 +134,7 @@
 /* When the section is in view, play the animation */
 #services.in-view .services-outline-text h2 {
     animation-play-state: running;
-}
+} */
 
 /* Service title and content animations */
 #services .services-title {
@@ -175,8 +174,8 @@
 
 /* ------------- WHY US SECTION ANIMATIONS ------------- */
 
-/* Why Us heading animation - from left */
-#whyus .outline-heading h2 {
+/* Why Us heading animation - DISABLED FOR SCROLL ANIMATION */
+/* #whyus .outline-heading h2 {
     opacity: 0;
     transform: translateX(-500px);
     animation: fadeInLeftHighSpace 3s ease forwards;
@@ -185,7 +184,7 @@
 
 #whyus.in-view .outline-heading h2 {
     animation-play-state: running;
-}
+} */
 
 /* Why Us content animation */
 #whyus .why-us-paragraph {

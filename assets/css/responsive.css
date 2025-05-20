@@ -958,4 +958,77 @@
     .progress-heading {
         margin-bottom: 5rem !important;
     }
+}
+
+/* ==========================================================================
+   SCROLL-ANIMATED DISPLAY ELEMENTS
+   ========================================================================== */
+/* Target directly the display-1 elements with our animation class */
+#about .outline-heading h2.display-1,
+#whyus .outline-heading h2.display-1,
+#gallery .outline-heading h2.display-1,
+#services .outline-heading h2.display-1 {
+    transition: transform 0.3s ease-out !important;
+    will-change: transform;
+    position: relative;
+    z-index: 2;
+    animation: none !important;
+    opacity: 1 !important;
+}
+
+/* When an element has the scroll-animate-display class, it should ignore other animations */
+.scroll-animate-display {
+    transition: transform 0.3s ease-out !important;
+    animation: none !important;
+}
+
+/* Specifically target elements marked for scroll animation */
+[data-scroll-animate="true"] {
+    animation: none !important;
+    transition: transform 0.3s ease-out !important;
+}
+
+/* Adjustments for different screen sizes */
+@media (max-width: 1200px) {
+    #about .outline-heading h2.display-1,
+    #whyus .outline-heading h2.display-1,
+    #gallery .outline-heading h2.display-1,
+    #services .outline-heading h2.display-1,
+    .scroll-animate-display,
+    [data-scroll-animate="true"] {
+        transition: transform 0.25s ease-out !important;
+    }
+}
+
+@media (max-width: 992px) {
+    #about .outline-heading h2.display-1,
+    #whyus .outline-heading h2.display-1,
+    #gallery .outline-heading h2.display-1,
+    #services .outline-heading h2.display-1,
+    .scroll-animate-display,
+    [data-scroll-animate="true"] {
+        transition: transform 0.2s ease-out !important;
+    }
+}
+
+@media (max-width: 768px) {
+    #about .outline-heading h2.display-1,
+    #whyus .outline-heading h2.display-1,
+    #gallery .outline-heading h2.display-1,
+    #services .outline-heading h2.display-1,
+    .scroll-animate-display,
+    [data-scroll-animate="true"] {
+        transition: transform 0.2s ease-out !important;
+    }
+}
+
+@media (max-width: 576px) {
+    #about .outline-heading h2.display-1,
+    #whyus .outline-heading h2.display-1,
+    #gallery .outline-heading h2.display-1,
+    #services .outline-heading h2.display-1,
+    .scroll-animate-display,
+    [data-scroll-animate="true"] {
+        transition: transform 0.15s ease-out !important;
+    }
 } 

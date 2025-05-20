@@ -13,10 +13,10 @@ document.addEventListener('DOMContentLoaded', function() {
     setupGalleryCarousel();
     setupSmoothScrolling();
     setupStatCounters();
+    setupScrollDependentAnimations();
     
     // Function to initialize only the hero/header animations immediately
     function initializeHeroAnimations() {
-        console.log("Initializing hero animations on page load");
         // For navbar, hero and about section animations, these should run immediately
         const heroSection = document.getElementById('hero');
         if (heroSection) {
@@ -30,7 +30,6 @@ document.addEventListener('DOMContentLoaded', function() {
             const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
             
             if (isVisible) {
-                console.log("About section is visible on load, activating animations");
                 aboutSection.classList.add('in-view');
                 triggerSectionAnimations('about');
             }
@@ -55,11 +54,8 @@ document.addEventListener('DOMContentLoaded', function() {
             if (section) {
                 // Skip if this section already has animations running
                 if (section.classList.contains('in-view')) {
-                    console.log(`${sectionInfo.id} section already animated, skipping`);
                     return;
                 }
-                
-                console.log(`Setting up observer for ${sectionInfo.id} section with rootMargin: ${sectionInfo.rootMargin}`);
                 
                 // For whyus section, handle differently to ensure animations don't start too early
                 if (sectionInfo.id === 'whyus') {
@@ -68,7 +64,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     const sectionObserver = new IntersectionObserver((entries) => {
                         entries.forEach(entry => {
                             if (entry.isIntersecting) {
-                                console.log(`${section.id} section is now visible`);
                                 section.classList.add('in-view');
                                 sectionObserver.unobserve(section);
                                 
@@ -83,8 +78,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     
                     sectionObserver.observe(section);
                 }
-                
-                // NO safety timeouts - we want animations to trigger only when sections are visible
             }
         });
         
@@ -105,7 +98,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
                 
                 if (isVisible) {
-                    console.log(`${sectionId} is already visible on page load`);
                     section.classList.add('in-view');
                     triggerSectionAnimations(sectionId);
                 }
@@ -124,7 +116,6 @@ document.addEventListener('DOMContentLoaded', function() {
         const whyusObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    console.log(`Why Us section is now visible`);
                     whyusSection.classList.add('in-view');
                     whyusObserver.unobserve(whyusSection);
                     
@@ -154,7 +145,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 // Consider the section in view if it's visible in the viewport
                 if (rect.top <= windowHeight * 0.8 && rect.bottom >= 0) {
-                    console.log(`Scroll trigger: ${sectionId} section is now visible`);
                     section.classList.add('in-view');
                     triggerSectionAnimations(sectionId);
                 }
@@ -310,5 +300,134 @@ document.addEventListener('DOMContentLoaded', function() {
                 element.textContent = count;
             }
         }, 20);
+    }
+    
+    // Function to handle scroll-dependent animations for display-1 elements
+    function setupScrollDependentAnimations() {
+        // Target sections with display-1 headings we want to animate on scroll
+        const targetSections = ['about', 'whyus', 'gallery', 'services'];
+        const displayElements = {};
+        
+        // First, ensure we cancel any existing animations on these elements
+        targetSections.forEach(sectionId => {
+            const section = document.getElementById(sectionId);
+            if (section) {
+                // Target the h2.display-1 elements specifically
+                const displayElement = section.querySelector('.outline-heading h2.display-1');
+                if (displayElement) {
+                    // Cancel any existing animations from the animations.css
+                    displayElement.style.animation = 'none';
+                    displayElement.style.opacity = '1';
+                    displayElement.style.transform = 'translateX(0)';
+                    
+                    // Force a reflow
+                    displayElement.offsetHeight;
+                    
+                    // Add a data attribute to mark this element for our scroll animation
+                    displayElement.setAttribute('data-scroll-animate', 'true');
+                }
+            }
+        });
+        
+        // Function to update section positions (for initial setup and on resize)
+        function updateSectionPositions() {
+            targetSections.forEach(sectionId => {
+                const section = document.getElementById(sectionId);
+                if (section) {
+                    // Use a more specific selector to target the display-1 elements
+                    // directly inside outline-heading
+                    const displayElement = section.querySelector('.outline-heading h2.display-1');
+                    
+                    if (displayElement) {
+                        displayElements[sectionId] = {
+                            element: displayElement,
+                            sectionTop: section.offsetTop,
+                            sectionBottom: section.offsetTop + section.offsetHeight
+                        };
+                        
+                        // Add a class to identify these elements for styling
+                        displayElement.classList.add('scroll-animate-display');
+                        
+                        // Force an initial position to ensure they're visible
+                        displayElement.style.transform = 'translateX(0)';
+                    }
+                }
+            });
+            
+            // Initial update of positions
+            window.dispatchEvent(new Event('scroll'));
+        }
+        
+        // Add scroll listener to handle the animation
+        window.addEventListener('scroll', function() {
+            const scrollPosition = window.scrollY;
+            const windowHeight = window.innerHeight;
+            
+            // Get the computed styles for the display-1 elements to check if they have existing animations
+            // that might be interfering with our scroll-based animations
+            Object.keys(displayElements).forEach(sectionId => {
+                const data = displayElements[sectionId];
+                if (!data || !data.element) return;
+                
+                const element = data.element;
+                const computedStyle = window.getComputedStyle(element);
+                
+                // Check if the element has any animations running
+                const hasAnimation = computedStyle.animationName !== 'none';
+                
+                // If the element has animations, we'll override them with our transform
+                if (hasAnimation) {
+                    // Cancel any running animations
+                    element.style.animation = 'none';
+                    element.style.animationName = 'none';
+                }
+                
+                // Calculate whether the section is in view
+                const sectionStart = data.sectionTop - windowHeight;
+                const sectionEnd = data.sectionBottom;
+                
+                // If the section is visible, calculate the transform
+                if (scrollPosition > sectionStart && scrollPosition < sectionEnd) {
+                    // Calculate animation progress within the section
+                    // 0 = just entered, 1 = about to leave
+                    const progress = (scrollPosition - sectionStart) / (sectionEnd - sectionStart);
+                    
+                    // Calculate the transform - we want it to move from -100px to 0 as user scrolls down,
+                    // and from 0 to 100px as user continues scrolling down out of view
+                    let translateX = 0;
+                    
+                    if (progress < 0.5) {
+                        // Coming into view (map 0->0.5 to -100->0)
+                        translateX = -100 + (progress * 200);
+                    } else {
+                        // Going out of view (map 0.5->1 to 0->100)
+                        translateX = (progress - 0.5) * 200;
+                    }
+                    
+                    // Apply only the translateX transform directly, bypassing any existing styles
+                    element.style.transform = `translateX(${translateX}px)`;
+                } else if (scrollPosition <= sectionStart) {
+                    // Before section is in view
+                    element.style.transform = 'translateX(-100px)';
+                } else {
+                    // After section is out of view
+                    element.style.transform = 'translateX(100px)';
+                }
+            });
+        });
+        
+        // Listen for window resize events to update section positions
+        window.addEventListener('resize', function() {
+            // Debounce resize events
+            if (this.resizeTimeout) {
+                clearTimeout(this.resizeTimeout);
+            }
+            this.resizeTimeout = setTimeout(function() {
+                updateSectionPositions();
+            }, 200);
+        });
+        
+        // Initial setup
+        updateSectionPositions();
     }
 });
