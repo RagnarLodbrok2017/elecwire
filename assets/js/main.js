@@ -143,6 +143,9 @@ $(document).ready(function() {
     
     // Make clicked nav links active immediately
     $('.nav-link').on('click', function(e) {
+        // Ensure we only handle clicks directly on the nav-link element, not its padding
+        if (e.target !== this) return;
+        
         // Remove active class from all links
         $('.nav-link').removeClass('active').css('color', '#ffffff');
         

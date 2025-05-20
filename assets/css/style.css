@@ -311,15 +311,25 @@ html {
     border-bottom: none;
 }
 
+.navbar-nav {
+    display: flex;
+    align-items: center;
+}
+
+.nav-item {
+    position: relative;
+    margin-left: 4.95rem;
+}
+
 .nav-link {
     font-family: 'Hubot Sans', sans-serif;
     font-weight: 500;
     font-size: 0.85rem;
     letter-spacing: 1px;
     transition: color 0.3s ease;
-    padding-left: 4.95rem !important;
+    padding: 0 !important;
     color: #ffffff !important;
-    padding-right: 0 !important;
+    display: inline-block;
 }
 
 .nav-link:hover {
