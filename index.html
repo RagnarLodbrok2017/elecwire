@@ -78,12 +78,11 @@
     <!-- Hero Section -->
     <section id="hero" class="hero-section">
         <div class="hero-background">
-            <video autoplay muted id="background-video" preload="auto">
+            <video autoplay muted id="background-video" preload="auto" playsinline>
                 <source src="assets/images/elecwire_video.mp4" type="video/mp4">
                 <!-- Fallback for browsers that don't support video -->
                 <img src="assets/images/header-background.png" alt="Electrical wires background">
             </video>
-            <img src="assets/images/header-background.png" alt="Background after video" id="after-video-img" style="display: none;">
         </div>
         <!-- <div class="hero-gradient"></div> -->
         <div class="container">
@@ -632,17 +631,7 @@
     <script src="assets/js/animation.js"></script>
     
     <script>
-        // Handle video end
         document.addEventListener('DOMContentLoaded', function() {
-            const video = document.getElementById('background-video');
-            const afterImage = document.getElementById('after-video-img');
-            
-            video.addEventListener('ended', function() {
-                // Hide video and show image when video ends
-                video.style.display = 'none';
-                afterImage.style.display = 'block';
-            });
-            
             // Backup loader hiding - if loader is still visible after 10 seconds, force hide it
             setTimeout(function() {
                 const pageLoader = document.getElementById('page-loader');

@@ -383,112 +383,175 @@ $(document).ready(function() {
 function handlePageLoading() {
     const video = document.getElementById('background-video');
     const pageLoader = document.getElementById('page-loader');
-    const afterVideoImg = document.getElementById('after-video-img');
+    const progressBar = document.querySelector('.loader-progress-bar');
     
     // If there's no page loader, exit early
     if (!pageLoader) {
         return;
     }
     
-    // Track if video and page are loaded
+    // Track loading resources
+    let totalResources = 0;
+    let loadedResources = 0;
     let videoLoaded = false;
     let pageLoaded = false;
     
-    // Function to hide the loader only when both video and page are loaded
-    function hideLoader() {
+    // Function to update progress bar
+    function updateProgress() {
+        // Calculate percentage loaded (minimum 5% to show something is happening)
+        let percentage = 5;
+        
+        if (totalResources > 0) {
+            percentage = Math.max(5, Math.min(95, Math.floor((loadedResources / totalResources) * 100)));
+        }
+        
+        // If video and page are fully loaded, set to 100%
         if (videoLoaded && pageLoaded) {
-            console.log("Both video and page fully loaded, hiding loader");
-            pageLoader.classList.add('hidden');
-            
-            // Force a scroll event to properly position elements after loader is hidden
-            setTimeout(function() {
-                window.dispatchEvent(new Event('scroll'));
-            }, 100);
-        } else {
-            console.log("Still waiting for full page load. Video loaded: " + videoLoaded + ", Page loaded: " + pageLoaded);
+            percentage = 100;
+        }
+        
+        // Update progress bar width
+        progressBar.style.width = percentage + '%';
+        
+        console.log(`Loading progress: ${percentage}% (${loadedResources}/${totalResources} resources)`);
+        
+        // Hide loader when fully loaded
+        if (percentage === 100) {
+            setTimeout(() => {
+                hideLoader();
+            }, 500); // Short delay to show 100% completion
         }
     }
     
-    // Handle video loading
+    // Function to hide the loader
+    function hideLoader() {
+        console.log("All resources loaded, hiding loader");
+            pageLoader.classList.add('hidden');
+        
+        // Force a scroll event to properly position elements after loader is hidden
+        setTimeout(function() {
+            window.dispatchEvent(new Event('scroll'));
+        }, 100);
+    }
+    
+    // Count and track all page resources
+    function trackPageResources() {
+        // Get all resources that need to be loaded
+        const images = Array.from(document.images);
+        const scripts = Array.from(document.querySelectorAll('script[src]'));
+        const stylesheets = Array.from(document.querySelectorAll('link[rel="stylesheet"]'));
+        const videos = Array.from(document.querySelectorAll('video'));
+        
+        // Calculate total resources to track
+        totalResources = images.length + scripts.length + stylesheets.length + videos.length;
+        console.log(`Tracking ${totalResources} resources: ${images.length} images, ${scripts.length} scripts, ${stylesheets.length} stylesheets, ${videos.length} videos`);
+        
+        // Track image loading
+        images.forEach(img => {
+            // If image is already loaded
+            if (img.complete) {
+                loadedResources++;
+                updateProgress();
+            } else {
+                // Add load and error event listeners
+                img.addEventListener('load', () => {
+                    loadedResources++;
+                    updateProgress();
+                });
+                img.addEventListener('error', () => {
+                    loadedResources++;
+                    updateProgress();
+                });
+            }
+        });
+        
+        // Track video loading
+        videos.forEach(vid => {
+            if (vid.readyState >= 3) {
+                loadedResources++;
+                updateProgress();
+            } else {
+                vid.addEventListener('canplaythrough', () => {
+                    loadedResources++;
+                    updateProgress();
+                }, { once: true });
+                vid.addEventListener('error', () => {
+                    loadedResources++;
+                    updateProgress();
+                }, { once: true });
+            }
+        });
+        
+        // For scripts and stylesheets, we'll assume they're loaded
+        // since they're usually blocking resources
+        loadedResources += scripts.length + stylesheets.length;
+        updateProgress();
+    }
+    
+    // Handle main background video loading separately
     if (video) {
         // Check for cached video
         if (video.readyState >= 3) {
-            console.log("Video already loaded from cache");
+            console.log("Background video already loaded from cache");
             videoLoaded = true;
-            hideLoader();
+            updateProgress();
         }
         
         // Video can play through (fully loaded)
         video.addEventListener('canplaythrough', function() {
-            console.log("Video can play through");
-            // Only respond if we haven't already loaded
+            console.log("Background video can play through");
             if (!videoLoaded) {
                 videoLoaded = true;
-                hideLoader();
+                updateProgress();
             }
         });
         
         // Also handle video loading error
         video.addEventListener('error', function(e) {
-            console.error("Video loading error:", e);
+            console.error("Background video loading error:", e);
             videoLoaded = true;
-            hideLoader();
+            updateProgress();
         });
         
-        // Handle video ended event
-        video.addEventListener('ended', function() {
-            console.log("Video ended");
-            video.style.display = 'none';
-            afterVideoImg.style.display = 'block';
-        });
+        // Handle video ended event - removed since we're using loop attribute
+        // Let video loop naturally without interference
         
         // Add timeout for video loading as fallback
         setTimeout(function() {
             if (!videoLoaded) {
                 console.log("Video load timeout - forcing video loaded state");
                 videoLoaded = true;
-                hideLoader();
+                updateProgress();
             }
         }, 5000);
     } else {
         // No video element, mark video as loaded
         videoLoaded = true;
-        hideLoader();
+        updateProgress();
+    }
+    
+    // Start tracking resources once DOM is ready
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', trackPageResources);
+    } else {
+        trackPageResources();
     }
     
     // Wait for the entire page to load
     window.addEventListener('load', function() {
         console.log("Window load event fired");
         pageLoaded = true;
-        hideLoader();
+        updateProgress();
     });
     
-    // Mark page as loaded if DOMContentLoaded already fired
-    if (document.readyState === 'complete' || document.readyState === 'interactive') {
-        console.log("Document already interactive/complete");
-        pageLoaded = true;
-        hideLoader();
-    }
-            
-    // Fallback - hide loader after maximum wait time (8 seconds)
+    // Fallback - hide loader after maximum wait time (10 seconds)
     setTimeout(function() {
         console.log("Force loading complete after timeout");
-        if (!videoLoaded || !pageLoaded) {
-            console.log("Forcing loader to hide after timeout");
-            // Force both video and page to be considered loaded after timeout
-            videoLoaded = true;
-            pageLoaded = true;
-            hideLoader();
-            
-            // Directly hide the loader in case the hideLoader function has issues
-            pageLoader.classList.add('hidden');
-            
-            // Force a scroll event to properly position elements
-            setTimeout(function() {
-                window.dispatchEvent(new Event('scroll'));
-            }, 100);
-        }
-    }, 8000);
+        videoLoaded = true;
+        pageLoaded = true;
+        updateProgress();
+        hideLoader();
+    }, 10000);
 }
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -575,20 +638,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
-    // Handle video end
-    function handleVideoEnd() {
-        const video = document.getElementById('background-video');
-        const afterImage = document.getElementById('after-video-img');
-        
-        if (video && afterImage) {
-            video.addEventListener('ended', function() {
-                // Hide video and show image when video ends
-                video.style.display = 'none';
-                afterImage.style.display = 'block';
-            });
-        }
-    }
-    
     // Handle progress section media
     function handleProgressMedia() {
         // Check if the browser supports video
@@ -640,7 +689,6 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Initialize all functionality
     initGalleryCarousel();
-    handleVideoEnd();
     handleProgressMedia();
     initServicesSection();
     
