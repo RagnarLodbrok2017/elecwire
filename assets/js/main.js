@@ -419,19 +419,24 @@ function handlePageLoading() {
         if (percentage === 100) {
             setTimeout(() => {
                 hideLoader();
-            }, 500); // Short delay to show 100% completion
+            }, 300); // Short delay to show 100% completion
         }
     }
     
     // Function to hide the loader
     function hideLoader() {
         console.log("All resources loaded, hiding loader");
-            pageLoader.classList.add('hidden');
+        // Force opacity to 0 first to ensure transition works
+        pageLoader.style.opacity = '0';
         
-        // Force a scroll event to properly position elements after loader is hidden
         setTimeout(function() {
+            // Then add the hidden class and remove from DOM flow
+            pageLoader.classList.add('hidden');
+            pageLoader.style.visibility = 'hidden';
+            
+            // Force a scroll event to properly position elements after loader is hidden
             window.dispatchEvent(new Event('scroll'));
-        }, 100);
+        }, 500);
     }
     
     // Count and track all page resources
@@ -523,7 +528,7 @@ function handlePageLoading() {
                 videoLoaded = true;
                 updateProgress();
             }
-        }, 5000);
+        }, 3000); // Reduced from 5000ms to 3000ms
     } else {
         // No video element, mark video as loaded
         videoLoaded = true;
@@ -544,14 +549,21 @@ function handlePageLoading() {
         updateProgress();
     });
     
-    // Fallback - hide loader after maximum wait time (10 seconds)
+    // Fallback - hide loader after maximum wait time (8 seconds)
     setTimeout(function() {
         console.log("Force loading complete after timeout");
         videoLoaded = true;
         pageLoaded = true;
         updateProgress();
-        hideLoader();
-    }, 10000);
+        
+        // Additional fallback in case updateProgress doesn't trigger hideLoader
+        setTimeout(function() {
+            if (!pageLoader.classList.contains('hidden')) {
+                console.log("Emergency loader hiding triggered");
+                hideLoader();
+            }
+        }, 500);
+    }, 8000); // Reduced from 10000ms to 8000ms
 }
 
 document.addEventListener('DOMContentLoaded', function() {

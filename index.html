@@ -637,9 +637,27 @@
                 const pageLoader = document.getElementById('page-loader');
                 if (pageLoader && getComputedStyle(pageLoader).visibility !== 'hidden') {
                     console.log("Backup loader hiding triggered");
-                    pageLoader.classList.add('hidden');
+                    pageLoader.style.opacity = '0';
+                    
+                    setTimeout(function() {
+                        pageLoader.classList.add('hidden');
+                        pageLoader.style.visibility = 'hidden';
+                        
+                        // Force a scroll event to properly position elements
+                        window.dispatchEvent(new Event('scroll'));
+                    }, 500);
                 }
-            }, 10000);
+            }, 6000); // Reduced from 10000ms to 6000ms
+            
+            // Final emergency fallback - absolutely ensure loader is gone
+            setTimeout(function() {
+                const pageLoader = document.getElementById('page-loader');
+                if (pageLoader) {
+                    console.log("Emergency loader removal triggered");
+                    pageLoader.remove(); // Completely remove from DOM
+                    window.dispatchEvent(new Event('scroll'));
+                }
+            }, 12000);
         });
     </script>
 </body>
