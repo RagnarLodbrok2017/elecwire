@@ -1031,4 +1031,35 @@
     [data-scroll-animate="true"] {
         transition: transform 0.15s ease-out !important;
     }
+}
+
+/* Extra Large Screens (Above 1920px) */
+@media (min-width: 1921px) {
+    .container {
+        max-width: 65%;
+    }
+
+    .navbar > .container {
+        max-width: 85%;
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+
+    .nav-item {
+        position: relative;
+        margin-left: 5.7vw;
+    }
+
+    .hero-section > .container {
+        max-width: 85%;
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+}
+
+/* Extra Large Screens (Above 2560px) */
+@media (min-width: 2560px) {
+    .nav-item {
+        margin-left: 5.3vw;
+    }
 } 

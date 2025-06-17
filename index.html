@@ -23,10 +23,11 @@
     <!-- Page Loader -->
     <div id="page-loader">
         <div class="loader-content">
-            <img src="assets/images/logo.png" alt="Elecwire Logo" class="loader-logo">
+            <!-- <img src="assets/images/logo.png" alt="Elecwire Logo" class="loader-logo"> -->
             <div class="loader-progress-container">
                 <div class="loader-progress-bar"></div>
             </div>
+            <div class="loader-progress-number">0%</div>
         </div>
     </div>
 
@@ -78,7 +79,7 @@
     <!-- Hero Section -->
     <section id="hero" class="hero-section">
         <div class="hero-background">
-            <video autoplay muted id="background-video" preload="auto" playsinline>
+            <video autoplay muted id="background-video" preload="auto" playsinline poster="assets/images/header-background.png">
                 <source src="assets/images/elecwire_video.mp4" type="video/mp4">
                 <!-- Fallback for browsers that don't support video -->
                 <img src="assets/images/header-background.png" alt="Electrical wires background">
@@ -629,36 +630,5 @@
     <script src="assets/js/main.js"></script>
     <!-- Animation JS -->
     <script src="assets/js/animation.js"></script>
-    
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Backup loader hiding - if loader is still visible after 10 seconds, force hide it
-            setTimeout(function() {
-                const pageLoader = document.getElementById('page-loader');
-                if (pageLoader && getComputedStyle(pageLoader).visibility !== 'hidden') {
-                    console.log("Backup loader hiding triggered");
-                    pageLoader.style.opacity = '0';
-                    
-                    setTimeout(function() {
-                        pageLoader.classList.add('hidden');
-                        pageLoader.style.visibility = 'hidden';
-                        
-                        // Force a scroll event to properly position elements
-                        window.dispatchEvent(new Event('scroll'));
-                    }, 500);
-                }
-            }, 6000); // Reduced from 10000ms to 6000ms
-            
-            // Final emergency fallback - absolutely ensure loader is gone
-            setTimeout(function() {
-                const pageLoader = document.getElementById('page-loader');
-                if (pageLoader) {
-                    console.log("Emergency loader removal triggered");
-                    pageLoader.remove(); // Completely remove from DOM
-                    window.dispatchEvent(new Event('scroll'));
-                }
-            }, 12000);
-        });
-    </script>
 </body>
 </html> 

@@ -269,7 +269,7 @@ $(document).ready(function() {
                 const firstItemTop = firstItem.offset().top;
                 const lastItemTop = lastItem.offset().top;
                 const scrollTop = $(window).scrollTop();
-                const navbarHeight = 90; // Navbar height in pixels
+                const navbarHeight = 9; // Navbar height in pixels
                 const sectionTop = servicesSection.offset().top;
                 
                 const servicesContainer = servicesSection.find('.container');
@@ -283,7 +283,7 @@ $(document).ready(function() {
                     // Calculate the position of the container's right edge relative to the viewport left edge
                     const containerRightEdgeFromViewportLeft = containerOffset.left + containerWidth;
 
-                    // The desired position for the column's right edge is 10px to the left of the container's right edge
+                    // The desired position for the column's right edge is 40px to the left of the container's right edge
                     const desiredColumnRightEdgeFromViewportLeft = containerRightEdgeFromViewportLeft - 10;
 
                     // The 'right' CSS property is the distance from the viewport's right edge.
@@ -300,7 +300,7 @@ $(document).ready(function() {
                     servicesSection.addClass('in-view');
                     
                     // Before reaching the first service item
-                    if (scrollTop < firstItemTop - 90) {
+                    if (scrollTop < firstItemTop - 60) {
                         // Keep it aligned with first service item
                         rightColumn.css({
                             'position': 'absolute',
@@ -310,7 +310,7 @@ $(document).ready(function() {
                         });
                     }
                     // When we reach the last service item
-                    else if (scrollTop >= lastItemTop - 90) {
+                    else if (scrollTop >= lastItemTop - 60) {
                         // Switch to absolute positioning to stay with last item
                         rightColumn.css({
                             'position': 'absolute',
@@ -323,8 +323,8 @@ $(document).ready(function() {
                     else {
                         rightColumn.css({
                             'position': 'fixed',
-                            'top': navbarHeight + 'px',
-                            'right': desiredRightOffset + 'px',
+                            'top': navbarHeight + 'vh',
+                            'right': desiredRightOffset + 'px', // Use calculated pixel value
                             'transform': 'translateY(0)'
                         });
                     }
@@ -403,13 +403,12 @@ function handlePageLoading() {
     const video = document.getElementById('background-video');
     const pageLoader = document.getElementById('page-loader');
     const progressBar = document.querySelector('.loader-progress-bar');
-    const progressNumber = document.querySelector('.loader-progress-number'); // Get the progress number element
-
+    
     // If there's no page loader, exit early
     if (!pageLoader) {
         return;
     }
-
+    
     // Track loading resources
     let totalResources = 0;
     let loadedResources = 0;
@@ -417,50 +416,45 @@ function handlePageLoading() {
     let pageLoaded = false;
     let loaderHidden = false;
     let videoStarted = false;
-
+    
     // Original page title to restore later
     const originalTitle = document.title;
-
+    
     // Function to update progress bar
     function updateProgress() {
         // Don't update if loader is already hidden
         if (loaderHidden) return;
-
+        
         // Calculate percentage loaded (minimum 5% to show something is happening)
         let percentage = 5;
-
+        
         if (totalResources > 0) {
             // Base percentage on loaded resources (max 90% until video is ready)
             const resourcePercentage = Math.floor((loadedResources / totalResources) * 90);
             percentage = Math.max(5, Math.min(90, resourcePercentage));
         }
-
+        
         // Final 10% reserved for video loading
         if (videoLoaded) {
             percentage = Math.min(100, percentage + 10);
         }
-
+        
         // If everything is loaded, set to 100%
         if (videoLoaded && pageLoaded && loadedResources >= totalResources) {
             percentage = 100;
         }
-
+        
         // Update progress bar width with smooth animation
         progressBar.style.width = percentage + '%';
-
-        // Update progress number text
-        if (progressNumber) {
-            progressNumber.textContent = percentage + '%';
-        }
-
+        
         // Update browser tab title with loading percentage
-        document.title = `${percentage}% | ${originalTitle}`; // Using backticks for template literal
-
+        document.title = `${percentage}% | ${originalTitle}`;
+        
         // Update favicon to show loading progress (creates a dynamic loading indicator)
         updateFavicon(percentage);
-
-        console.log(`Loading progress: ${percentage}% (${loadedResources}/${totalResources} resources, video: ${videoLoaded ? 'ready' : 'loading'})`); // Using backticks
-
+        
+        console.log(`Loading progress: ${percentage}% (${loadedResources}/${totalResources} resources, video: ${videoLoaded ? 'ready' : 'loading'})`);
+        
         // Hide loader when fully loaded
         if (percentage === 100) {
             // Make sure video has started playing before hiding loader
@@ -470,42 +464,42 @@ function handlePageLoading() {
                     playPromise
                         .then(() => {
                             videoStarted = true;
-                            setTimeout(() => hideLoader(), 300); // Short delay to show 100% completion
+                            setTimeout(() => hideLoader(), 300);
                         })
                         .catch(error => {
                             console.error("Video play error:", error);
                             // Still hide loader even if video fails
                             videoStarted = true;
-                            setTimeout(() => hideLoader(), 300); // Short delay to show 100% completion
+                            setTimeout(() => hideLoader(), 300);
                         });
                 } else {
                     videoStarted = true;
-                    setTimeout(() => hideLoader(), 300); // Short delay to show 100% completion
+                    setTimeout(() => hideLoader(), 300);
                 }
             } else {
-                setTimeout(() => hideLoader(), 300); // Short delay to show 100% completion
+                setTimeout(() => hideLoader(), 300);
             }
         }
     }
-
+    
     // Function to create a dynamic favicon showing loading progress
     function updateFavicon(percentage) {
         // Skip if browser doesn't support canvas
         if (!document.createElement('canvas').getContext) {
             return;
         }
-
+        
         try {
             // Create canvas for the favicon
             const canvas = document.createElement('canvas');
             canvas.width = 32;
             canvas.height = 32;
             const ctx = canvas.getContext('2d');
-
+            
             // Draw background
             ctx.fillStyle = '#050F19';
             ctx.fillRect(0, 0, 32, 32);
-
+            
             // Draw progress circle
             ctx.beginPath();
             ctx.moveTo(16, 16);
@@ -513,19 +507,19 @@ function handlePageLoading() {
             ctx.lineTo(16, 16);
             ctx.fillStyle = '#FF4D00';
             ctx.fill();
-
+            
             // Draw inner circle
             ctx.beginPath();
             ctx.arc(16, 16, 8, 0, Math.PI*2, false);
             ctx.fillStyle = '#050F19';
             ctx.fill();
-
+            
             // Create the favicon link element
             const link = document.querySelector('link[rel="icon"]') || document.createElement('link');
             link.type = 'image/x-icon';
             link.rel = 'icon';
             link.href = canvas.toDataURL('image/png');
-
+            
             // Add to document if it doesn't exist
             if (!document.querySelector('link[rel="icon"]')) {
                 document.getElementsByTagName('head')[0].appendChild(link);
@@ -534,31 +528,31 @@ function handlePageLoading() {
             console.error("Error updating favicon:", e);
         }
     }
-
+    
     // Function to hide the loader
     function hideLoader() {
         // Prevent multiple calls to hideLoader
         if (loaderHidden) return;
-
+        
         loaderHidden = true;
         console.log("All resources loaded, hiding loader");
-
+        
         // Restore original page title
         document.title = originalTitle;
-
+        
         // Force opacity to 0 first to ensure transition works
         pageLoader.style.opacity = '0';
-
+        
         setTimeout(function() {
             // Then add the hidden class and remove from DOM flow
             pageLoader.classList.add('hidden');
             pageLoader.style.visibility = 'hidden';
-
+            
             // Force a scroll event to properly position elements after loader is hidden
                 window.dispatchEvent(new Event('scroll'));
-        }, 500); // Match CSS transition duration
+        }, 500);
     }
-
+    
     // Count and track all page resources
     function trackPageResources() {
         // Get all resources that need to be loaded
@@ -566,11 +560,11 @@ function handlePageLoading() {
         const scripts = Array.from(document.querySelectorAll('script[src]'));
         const stylesheets = Array.from(document.querySelectorAll('link[rel="stylesheet"]'));
         const videos = Array.from(document.querySelectorAll('video'));
-
+        
         // Calculate total resources to track
         totalResources = images.length + scripts.length + stylesheets.length + videos.length;
-        console.log(`Tracking ${totalResources} resources: ${images.length} images, ${scripts.length} scripts, ${stylesheets.length} stylesheets, ${videos.length} videos`); // Using backticks
-
+        console.log(`Tracking ${totalResources} resources: ${images.length} images, ${scripts.length} scripts, ${stylesheets.length} stylesheets, ${videos.length} videos`);
+        
         // Track image loading
         images.forEach(img => {
             // If image is already loaded
@@ -589,13 +583,13 @@ function handlePageLoading() {
                 });
             }
         });
-
+        
         // Track video loading
         videos.forEach(vid => {
-            if (vid.readyState >= 3) { // HAVE_FUTURE_DATA or higher
+            if (vid.readyState >= 3) {
                 loadedResources++;
                 updateProgress();
-            } else {
+        } else {
                 vid.addEventListener('canplaythrough', () => {
                     loadedResources++;
                     updateProgress();
@@ -606,47 +600,41 @@ function handlePageLoading() {
                 }, { once: true });
             }
         });
-
+        
         // For scripts and stylesheets, we'll assume they're loaded
         // since they're usually blocking resources
         loadedResources += scripts.length + stylesheets.length;
         updateProgress();
     }
-
+    
     // Handle main background video loading separately
     if (video) {
         // Check for cached video
-        if (video.readyState >= 3) { // HAVE_FUTURE_DATA or higher
+        if (video.readyState >= 3) {
             console.log("Background video already loaded from cache");
             videoLoaded = true;
             updateProgress();
         }
-
+        
         // Video can play through (fully loaded)
         video.addEventListener('canplaythrough', function() {
             console.log("Background video can play through");
             if (!videoLoaded) {
                 videoLoaded = true;
                 updateProgress();
-            } else {
-                // If videoLoaded was already true (e.g. due to timeout), ensure progress is updated
-                updateProgress();
             }
         });
-
+        
         // Also handle video loading error
         video.addEventListener('error', function(e) {
             console.error("Background video loading error:", e);
-            // Even on error, mark as loaded to unblock the loader
-            if (!videoLoaded) {
-                 videoLoaded = true;
-                 updateProgress();
-            }
+            videoLoaded = true;
+            updateProgress();
         });
-
+        
         // Preload video to ensure faster playback
         video.preload = "auto";
-
+        
         // Add timeout for video loading as fallback (longer timeout)
         setTimeout(function() {
             if (!videoLoaded) {
@@ -660,21 +648,21 @@ function handlePageLoading() {
         videoLoaded = true;
         updateProgress();
     }
-
+    
     // Start tracking resources once DOM is ready
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', trackPageResources);
     } else {
         trackPageResources();
     }
-
+    
     // Wait for the entire page to load
     window.addEventListener('load', function() {
         console.log("Window load event fired");
         pageLoaded = true;
         updateProgress();
     });
-
+    
     // Final fallback - hide loader after maximum wait time (10 seconds)
     setTimeout(function() {
         if (!loaderHidden) {
@@ -682,16 +670,8 @@ function handlePageLoading() {
             videoLoaded = true;
             pageLoaded = true;
             // Force all resources to be considered loaded
-            loadedResources = totalResources; // Ensure progress reaches 100
+            loadedResources = totalResources;
             updateProgress();
-
-             // Double check the loader is hidden after a short delay
-             setTimeout(function() {
-                 if (!pageLoader.classList.contains('hidden')) {
-                     console.log("Emergency loader hiding triggered after final timeout");
-                     hideLoader();
-                 }
-             }, 500); // Give it a moment to hide gracefully
         }
     }, 10000); // Increased to 10 seconds as final safety
 }
